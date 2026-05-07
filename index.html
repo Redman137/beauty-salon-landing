@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>digital space | портфолио</title>
+    <title>MILA | салон красоты</title>
     <style>
         * {
             margin: 0;
@@ -12,46 +12,43 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, 'Inter', 'Segoe UI', Roboto, Helvetica, sans-serif;
-            background: #ffffff;
-            color: #111;
-            line-height: 1.5;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background: #fffcf9;
+            color: #2d2a28;
             scroll-behavior: smooth;
+            line-height: 1.5;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 28px;
         }
 
         /* header */
         header {
-            border-bottom: 1px solid #eaeef2;
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(4px);
+            background: rgba(255, 252, 249, 0.96);
+            backdrop-filter: blur(8px);
             position: sticky;
             top: 0;
-            z-index: 10;
+            z-index: 100;
+            border-bottom: 1px solid #f0e4dc;
         }
 
-        .nav-bar {
+        .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 0;
+            padding: 20px 0;
             flex-wrap: wrap;
             gap: 16px;
         }
 
         .logo {
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: -0.3px;
-            background: linear-gradient(135deg, #1a1a2e, #16213e);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            color: #c47a5a;
         }
 
         .nav-links {
@@ -63,168 +60,294 @@
         .nav-links a {
             text-decoration: none;
             font-weight: 500;
-            color: #2c3e44;
+            color: #4a3b34;
             transition: 0.2s;
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover {
-            color: #0066cc;
+            color: #c47a5a;
         }
 
-        /* hero */
-        .hero {
-            padding: 100px 0 80px;
-            background: #fbfdfe;
-        }
-
-        .hero h1 {
-            font-size: 3.5rem;
-            font-weight: 700;
-            letter-spacing: -1px;
-            line-height: 1.2;
-            max-width: 800px;
-        }
-
-        .hero .accent {
-            background: linear-gradient(120deg, #0066cc, #00a3a3);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #3a5460;
-            margin: 24px 0 32px;
-            max-width: 580px;
-        }
-
+        /* buttons */
         .btn {
             display: inline-block;
-            background: #111;
+            background: #c47a5a;
             color: white;
             padding: 12px 32px;
             border-radius: 40px;
             text-decoration: none;
             font-weight: 500;
-            transition: 0.2s;
+            transition: 0.25s;
             border: none;
             cursor: pointer;
         }
 
         .btn:hover {
-            background: #0066cc;
+            background: #a85e3e;
             transform: translateY(-2px);
+            box-shadow: 0 6px 14px rgba(196, 122, 90, 0.25);
         }
 
-        /* секции */
+        .btn-outline {
+            background: transparent;
+            border: 1.5px solid #c47a5a;
+            color: #c47a5a;
+        }
+
+        .btn-outline:hover {
+            background: #c47a5a;
+            color: white;
+        }
+
+        /* hero */
+        .hero {
+            padding: 100px 0 80px;
+            background: linear-gradient(135deg, #fffaf5 0%, #fff5ed 100%);
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 600;
+            line-height: 1.2;
+            color: #2d2a28;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #6b5b52;
+            margin: 24px 0 32px;
+            max-width: 500px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 40px;
+        }
+
+        .stat {
+            font-size: 0.9rem;
+            color: #7a6a62;
+        }
+
+        .stat strong {
+            font-size: 1.6rem;
+            font-weight: 600;
+            display: block;
+            color: #c47a5a;
+        }
+
+        .hero-abstract {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .soft-circle {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, #f0dfd4, #e8cbbc);
+            border-radius: 60% 40% 50% 50% / 45% 50% 50% 55%;
+            animation: softMove 8s infinite alternate ease-in-out;
+            box-shadow: 0 20px 35px -10px rgba(100, 60, 40, 0.15);
+        }
+
+        @keyframes softMove {
+            0% { border-radius: 60% 40% 50% 50% / 45% 50% 50% 55%; transform: rotate(0deg);}
+            100% { border-radius: 45% 55% 40% 60% / 50% 45% 55% 50%; transform: rotate(2deg);}
+        }
+
+        /* sections */
         section {
             padding: 80px 0;
-            border-bottom: 1px solid #eef2f5;
+            border-bottom: 1px solid #f3e8e0;
         }
 
         .section-title {
-            font-size: 2rem;
-            font-weight: 600;
-            margin-bottom: 48px;
+            font-size: 2.2rem;
+            font-weight: 500;
+            text-align: center;
+            margin-bottom: 3rem;
             letter-spacing: -0.3px;
+            color: #2d2a28;
         }
 
-        /* услуги / направления */
-        .cards-grid {
+        .section-title span {
+            color: #c47a5a;
+            font-weight: 600;
+        }
+
+        /* services grid */
+        .services-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
+            justify-content: center;
         }
 
-        .card {
+        .service-card {
             flex: 1 1 260px;
-            background: #ffffff;
-            padding: 28px 24px;
+            background: white;
             border-radius: 24px;
-            border: 1px solid #eef2f8;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid #f0e2d8;
             transition: all 0.25s;
         }
 
-        .card:hover {
-            border-color: #cbdde6;
-            box-shadow: 0 12px 24px -12px rgba(0,0,0,0.08);
-            transform: translateY(-3px);
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #e2caba;
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.05);
         }
 
-        .card .emoji {
-            font-size: 2.4rem;
-            margin-bottom: 20px;
-            display: block;
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            font-weight: 600;
-        }
-
-        .card p {
-            color: #4a6672;
-            font-size: 0.95rem;
-        }
-
-        /* работы (простые блоки) */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 28px;
-        }
-
-        .project {
-            background: #fafcff;
-            border-radius: 20px;
-            padding: 1.5rem;
-            border: 1px solid #eef2fa;
-            transition: 0.2s;
-        }
-
-        .project:hover {
-            background: #ffffff;
-            border-color: #cddfe8;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
-        }
-
-        .project h3 {
-            font-size: 1.3rem;
-            margin-bottom: 10px;
-        }
-
-        .project .tag {
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #0066cc;
-            margin-bottom: 12px;
+        .service-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
             display: inline-block;
         }
 
-        /* форма */
-        .form-container {
-            max-width: 560px;
-            background: #fbfdfe;
+        .service-card h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .service-card p {
+            color: #6b5b52;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .price-tag {
+            font-weight: 600;
+            color: #c47a5a;
+            font-size: 1.1rem;
+        }
+
+        /* masters (без фото) */
+        .masters-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .master-card {
+            flex: 1 1 200px;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .master-avatar {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(145deg, #f2e4da, #e8d5c8);
+            border-radius: 50%;
+            margin: 0 auto 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
+        }
+
+        .master-card h4 {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        .master-card p {
+            font-size: 0.85rem;
+            color: #7f6b60;
+        }
+
+        /* price table */
+        .price-table {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 1px solid #f0e2d8;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px dashed #eedfd4;
+        }
+
+        .price-row:last-child {
+            border: none;
+        }
+
+        .price-name {
+            font-weight: 500;
+        }
+
+        .price-value {
+            color: #c47a5a;
+            font-weight: 600;
+        }
+
+        /* contact form */
+        .contact-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .contact-info {
+            flex: 1;
+            background: white;
             padding: 2rem;
             border-radius: 28px;
-            border: 1px solid #eef2f8;
+            border: 1px solid #f0e2d8;
+        }
+
+        .contact-info p {
+            margin: 16px 0;
+            font-size: 1rem;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .form-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 28px;
+            border: 1px solid #f0e2d8;
         }
 
         .form-group {
-            margin-bottom: 20px;
+            margin-bottom: 1.2rem;
         }
 
-        input, textarea {
+        input, select, textarea {
             width: 100%;
             padding: 12px 16px;
-            border: 1px solid #dce5ec;
+            border: 1px solid #e5d5ca;
             border-radius: 60px;
             font-family: inherit;
-            font-size: 1rem;
-            background: white;
+            font-size: 0.95rem;
+            background: #fffefc;
         }
 
         textarea {
@@ -232,43 +355,33 @@
             resize: vertical;
         }
 
-        input:focus, textarea:focus {
+        input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: #0066cc;
+            border-color: #c47a5a;
         }
 
         footer {
-            padding: 48px 0 40px;
+            background: #fef7f2;
+            padding: 40px 0;
             text-align: center;
-            color: #6c8b9b;
+            color: #8f7a6e;
             font-size: 0.85rem;
-            background: #fbfdfe;
         }
 
-        .social {
-            margin-top: 12px;
-        }
-
-        .social a {
-            color: #3a6e8c;
-            text-decoration: none;
+        .social-links a {
+            color: #b58a72;
             margin: 0 12px;
+            text-decoration: none;
         }
 
-        .social a:hover {
-            color: #0066cc;
+        .social-links a:hover {
+            color: #c47a5a;
         }
 
-        @media (max-width: 700px) {
-            .hero h1 {
-                font-size: 2.3rem;
-            }
-            .section-title {
-                font-size: 1.7rem;
-            }
-            .nav-bar {
-                flex-direction: column;
-            }
+        @media (max-width: 800px) {
+            .hero-content h1 { font-size: 2.3rem; }
+            .section-title { font-size: 1.8rem; }
+            .soft-circle { width: 220px; height: 220px; }
         }
     </style>
 </head>
@@ -276,113 +389,169 @@
 
 <header>
     <div class="container">
-        <div class="nav-bar">
-            <div class="logo">✦ space studio</div>
+        <div class="navbar">
+            <div class="logo">✦ MILA STUDIO</div>
             <ul class="nav-links">
-                <li><a href="#work">проекты</a></li>
                 <li><a href="#services">услуги</a></li>
-                <li><a href="#contact">контакты</a></li>
+                <li><a href="#masters">мастера</a></li>
+                <li><a href="#price">прайс</a></li>
+                <li><a href="#contact">запись</a></li>
             </ul>
         </div>
     </div>
 </header>
 
-<main>
-    <section class="hero">
-        <div class="container">
-            <h1>цифровые <span class="accent">решения</span><br> для нового времени</h1>
-            <p>Разработка, дизайн и стратегия. Чисто, быстро, со вкусом.</p>
-            <a href="#contact" class="btn">начать проект →</a>
+<section class="hero">
+    <div class="container">
+        <div class="hero-grid">
+            <div class="hero-content">
+                <h1>красота <br>в каждой детали</h1>
+                <p>Салон MILA — место, где рождается гармония. Только премиальные средства, авторские техники и уютная атмосфера.</p>
+                <a href="#contact" class="btn">записаться онлайн</a>
+                <div class="hero-stats">
+                    <div class="stat"><strong>7 лет</strong> совершенства</div>
+                    <div class="stat"><strong>15+</strong> мастеров</div>
+                </div>
+            </div>
+            <div class="hero-abstract">
+                <div class="soft-circle"></div>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
-    <section id="services">
-        <div class="container">
-            <h2 class="section-title">что мы делаем</h2>
-            <div class="cards-grid">
-                <div class="card">
-                    <span class="emoji">⚡️</span>
-                    <h3>веб-разработка</h3>
-                    <p>Современные сайты, лендинги, админ-панели. Адаптив и скорость.</p>
+<section id="services">
+    <div class="container">
+        <h2 class="section-title">что мы <span>дарим</span></h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="service-icon">💇‍♀️</div>
+                <h3>стрижки и укладки</h3>
+                <p>Женские, мужские, детские. Модельные и повседневные.</p>
+                <div class="price-tag">от 1800 ₽</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">🎨</div>
+                <h3>окрашивание</h3>
+                <p>Балаяж, шатуш, airtouch, сложное колорирование.</p>
+                <div class="price-tag">от 3500 ₽</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">💅</div>
+                <h3>маникюр и педикюр</h3>
+                <p>Классика, аппарат, покрытие, дизайн, SPA.</p>
+                <div class="price-tag">от 1400 ₽</div>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">✨</div>
+                <h3>уход за лицом</h3>
+                <p>Чистки, пилинги, массаж, ботулинотерапия.</p>
+                <div class="price-tag">от 2200 ₽</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="masters">
+    <div class="container">
+        <h2 class="section-title">наша <span>команда</span></h2>
+        <div class="masters-grid">
+            <div class="master-card">
+                <div class="master-avatar">💇</div>
+                <h4>Екатерина</h4>
+                <p>стилист-колорист</p>
+            </div>
+            <div class="master-card">
+                <div class="master-avatar">💅</div>
+                <h4>Алина</h4>
+                <p>мастер маникюра</p>
+            </div>
+            <div class="master-card">
+                <div class="master-avatar">🌿</div>
+                <h4>Мария</h4>
+                <p>косметолог</p>
+            </div>
+            <div class="master-card">
+                <div class="master-avatar">✂️</div>
+                <h4>Анна</h4>
+                <p>барбер / стилист</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="price">
+    <div class="container">
+        <h2 class="section-title">примеры <span>цен</span></h2>
+        <div class="price-table">
+            <div class="price-row"><span class="price-name">Женская стрижка</span><span class="price-value">1800 ₽</span></div>
+            <div class="price-row"><span class="price-name">Мужская стрижка</span><span class="price-value">1200 ₽</span></div>
+            <div class="price-row"><span class="price-name">Окрашивание (однотон)</span><span class="price-value">3500 ₽</span></div>
+            <div class="price-row"><span class="price-name">Сложное окрашивание</span><span class="price-value">5500 ₽</span></div>
+            <div class="price-row"><span class="price-name">Маникюр + покрытие</span><span class="price-value">1700 ₽</span></div>
+            <div class="price-row"><span class="price-name">Чистка лица</span><span class="price-value">2800 ₽</span></div>
+        </div>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="container">
+        <h2 class="section-title">давайте <span>знакомиться</span></h2>
+        <div class="contact-flex">
+            <div class="contact-info">
+                <p>📍 Санкт-Петербург, ул. Большая Конюшенная, 14</p>
+                <p>📞 +7 (812) 123-45-67</p>
+                <p>✉️ hello@mila.studio</p>
+                <p>🕒 ежедневно 10:00 – 21:00</p>
+                <div class="social-links" style="margin-top: 28px;">
+                    <a href="#">Instagram</a>    <a href="#">Telegram</a>
                 </div>
-                <div class="card">
-                    <span class="emoji">🎯</span>
-                    <h3>стратегия</h3>
-                    <p>Анализ, прототипы, CJM. Помогаем бизнесу расти онлайн.</p>
-                </div>
-                <div class="card">
-                    <span class="emoji">🖌️</span>
-                    <h3>дизайн</h3>
-                    <p>UI/UX, веб-дизайн, брендинг. Эстетика и функциональность.</p>
+            </div>
+            <div class="contact-form">
+                <div class="form-card">
+                    <form id="appointmentForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="имя" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="телефон" required>
+                        </div>
+                        <div class="form-group">
+                            <select>
+                                <option>выберите услугу</option>
+                                <option>стрижка / укладка</option>
+                                <option>окрашивание</option>
+                                <option>маникюр</option>
+                                <option>уход за лицом</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <textarea rows="2" placeholder="пожелания по времени"></textarea>
+                        </div>
+                        <button type="submit" class="btn">отправить заявку</button>
+                        <p id="formMessage" style="margin-top: 14px; font-size: 0.8rem;"></p>
+                    </form>
                 </div>
             </div>
         </div>
-    </section>
-
-    <section id="work">
-        <div class="container">
-            <h2 class="section-title">выбранные работы</h2>
-            <div class="projects-grid">
-                <div class="project">
-                    <div class="tag">лендинг</div>
-                    <h3>avalon beauty</h3>
-                    <p>Сайт для салона красоты с онлайн-записью и галереей.</p>
-                </div>
-                <div class="project">
-                    <div class="tag">интернет-магазин</div>
-                    <h3>nordic home</h3>
-                    <p>Магазин мебели с фильтрацией и корзиной на Vue.js.</p>
-                </div>
-                <div class="project">
-                    <div class="tag">корпоративный</div>
-                    <h3>logistic pro</h3>
-                    <p>Сайт для логистической компании с расчётом доставки.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">связаться</h2>
-            <div class="form-container">
-                <form id="mainForm">
-                    <div class="form-group">
-                        <input type="text" placeholder="имя" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" placeholder="email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea rows="3" placeholder="сообщение или вопрос"></textarea>
-                    </div>
-                    <button type="submit" class="btn">отправить →</button>
-                    <p id="msg" style="margin-top: 18px; font-size:0.85rem;"></p>
-                </form>
-            </div>
-        </div>
-    </section>
-</main>
+    </div>
+</section>
 
 <footer>
     <div class="container">
-        <p>работаем по всему миру — online studio</p>
-        <div class="social">
-            <a href="#">telegram</a> / <a href="#">instagram</a> / <a href="#">github</a>
-        </div>
-        <p style="margin-top: 20px;">© 2026 — минимализм и смысл</p>
+        <p>© 2026 MILA STUDIO — салон с душой и стилем</p>
     </div>
 </footer>
 
 <script>
-    const form = document.getElementById('mainForm');
-    const feedback = document.getElementById('msg');
+    const form = document.getElementById('appointmentForm');
+    const msgSpan = document.getElementById('formMessage');
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        feedback.textContent = 'спасибо! ответим в течение суток 💫';
-        feedback.style.color = '#0066cc';
+        msgSpan.textContent = 'спасибо! Мы перезвоним в течение часа 💫';
+        msgSpan.style.color = '#c47a5a';
         form.reset();
-        setTimeout(() => feedback.textContent = '', 4200);
+        setTimeout(() => msgSpan.textContent = '', 4500);
     });
 </script>
 </body>
