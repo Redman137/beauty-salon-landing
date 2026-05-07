@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Belleza | Салон красоты</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
+            background: #fffaf7;
+            color: #2d2a2a;
+            scroll-behavior: smooth;
+            line-height: 1.4;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 250, 245, 0.95);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid #ffd9ce;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            padding: 16px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #c37b6b, #b2473a);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            font-weight: 500;
+            color: #4a3a36;
+            transition: 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #c95b4a;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background: #c45a48;
+            color: white;
+            padding: 12px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #a33f2e;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(196, 90, 72, 0.2);
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(130deg, #fff1ea 0%, #ffe5db 100%);
+            padding: 4rem 0;
+        }
+
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            color: #2c2020;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            color: #5e4b44;
+            margin-bottom: 2rem;
+        }
+
+        .hero-img {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-img img {
+            max-width: 100%;
+            border-radius: 36px;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+        }
+
+        /* sections */
+        section {
+            padding: 5rem 0;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: #362828;
+        }
+
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1rem;
+            color: #5f4a42;
+        }
+
+        /* services grid */
+        .services-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            text-align: center;
+            flex: 1 1 280px;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+            border: 1px solid #ffe0d6;
+            transition: 0.2s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #e6b3a5;
+            box-shadow: 0 15px 25px -10px rgba(0,0,0,0.08);
+        }
+
+        .service-card img {
+            width: 64px;
+            margin-bottom: 1rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .price {
+            font-weight: 700;
+            color: #c45a48;
+            font-size: 1.3rem;
+            margin-top: 12px;
+        }
+
+        /* price table */
+        .price-table {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 28px;
+            padding: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px dashed #f0cfc4;
+        }
+
+        .price-row:last-child {
+            border: none;
+        }
+
+        .service-name {
+            font-weight: 500;
+        }
+
+        /* form */
+        .form-card {
+            background: white;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #f0cfc4;
+            border-radius: 60px;
+            font-family: inherit;
+            background: #fffdfc;
+        }
+
+        textarea {
+            border-radius: 24px;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #c45a48;
+        }
+
+        /* contact info */
+        .contact-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+
+        .contact-details {
+            flex: 1;
+            background: white;
+            padding: 2rem;
+            border-radius: 32px;
+        }
+
+        .map-placeholder {
+            flex: 1;
+            background: #e9dbd5;
+            border-radius: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: #7b5e54;
+            min-height: 220px;
+        }
+
+        footer {
+            background: #2b201d;
+            color: #cbb5ab;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        @media (max-width: 700px) {
+            .navbar {
+                flex-direction: column;
+                gap: 0.8rem;
+            }
+            .nav-links {
+                gap: 1.2rem;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">💇‍♀️ Belleza</div>
+            <ul class="nav-links">
+                <li><a href="#home">Главная</a></li>
+                <li><a href="#services">Услуги</a></li>
+                <li><a href="#price">Цены</a></li>
+                <li><a href="#contact">Контакты</a></li>
+            </ul>
+        </div>
+    </div>
+</header>
+
+<main>
+    <!-- Hero секция -->
+    <section id="home" style="padding: 0;">
+        <div class="hero">
+            <div class="container hero-grid">
+                <div class="hero-content">
+                    <h1>Красота, которая вдохновляет</h1>
+                    <p>Салон красоты Belleza – место, где забота о себе становится ритуалом. Стильные стрижки, безупречный маникюр и спа-уходы.</p>
+                    <a href="#booking" class="btn">Записаться онлайн →</a>
+                </div>
+                <div class="hero-img">
+                    <img src="https://picsum.photos/id/133/500/400" alt="Салон красоты">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- О салоне -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">О салоне</h2>
+            <div class="about-text">
+                <p>Belleza — это пространство нового поколения. Мы используем профессиональную косметику, стерильные инструменты и индивидуальный подход. Наши мастера регулярно повышают квалификацию, чтобы вы получали максимум удовольствия и уверенности в себе.</p>
+                <p style="margin-top: 1rem;">Атмосфера уюта, ароматы натуральных масел и безупречный сервис — ждем вас ежедневно.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Услуги (6 карточек) -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">Наши услуги</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2955/2955879.png" alt="Стрижка">
+                    <h3>Стрижки</h3>
+                    <p>Женские, мужские, детские. Модельные и повседневные.</p>
+                    <div class="price">от 1500 ₽</div>
+                </div>
+                <div class="service-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/3483/3483602.png" alt="Окрашивание">
+                    <h3>Окрашивание</h3>
+                    <p>Балаяж, шатуш, тонирование, сложное колорирование.</p>
+                    <div class="price">от 3000 ₽</div>
+                </div>
+                <div class="service-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4001/4001312.png" alt="Маникюр">
+                    <h3>Маникюр</h3>
+                    <p>Классический, аппаратный, покрытие гель-лак, дизайн.</p>
+                    <div class="price">от 1200 ₽</div>
+                </div>
+                <div class="service-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/4024/4024685.png" alt="Педикюр">
+                    <h3>Педикюр</h3>
+                    <p>Медицинский, аппаратный, SPA-педикюр.</p>
+                    <div class="price">от 1800 ₽</div>
+                </div>
+                <div class="service-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2886/2886588.png" alt="Косметология">
+                    <h3>Уход за лицом</h3>
+                    <p>Чистки, пилинги, массаж лица, ботокс для волос.</p>
+                    <div class="price">от 2000 ₽</div>
+                </div>
+                <div class="service-card">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2846/2846809.png" alt="Визаж">
+                    <h3>Визаж</h3>
+                    <p>Дневной, вечерний, свадебный макияж.</p>
+                    <div class="price">от 2500 ₽</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Цены (таблица) -->
+    <section id="price">
+        <div class="container">
+            <h2 class="section-title">Прайс-лист</h2>
+            <div class="price-table">
+                <div class="price-row"><span class="service-name">Женская стрижка (короткие волосы)</span><span>1500 ₽</span></div>
+                <div class="price-row"><span class="service-name">Женская стрижка (длинные волосы)</span><span>2200 ₽</span></div>
+                <div class="price-row"><span class="service-name">Окрашивание в один тон</span><span>3000 ₽</span></div>
+                <div class="price-row"><span class="service-name">Сложное окрашивание (airtouch, balayage)</span><span>5000 ₽</span></div>
+                <div class="price-row"><span class="service-name">Маникюр с покрытием</span><span>1400 ₽</span></div>
+                <div class="price-row"><span class="service-name">Педикюр (комплекс)</span><span>2200 ₽</span></div>
+                <div class="price-row"><span class="service-name">Чистка лица (ультразвуковая)</span><span>2500 ₽</span></div>
+                <div class="price-row"><span class="service-name">Вечерний макияж</span><span>3000 ₽</span></div>
+            </div>
+            <p style="text-align: center; margin-top: 1.5rem;">*точная стоимость после консультации с мастером</p>
+        </div>
+    </section>
+
+    <!-- Форма записи + контакты -->
+    <section id="booking">
+        <div class="container">
+            <h2 class="section-title">Записаться в Belleza</h2>
+            <div class="form-card">
+                <form id="appointmentForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Ваше имя" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" placeholder="Телефон *" required>
+                    </div>
+                    <div class="form-group">
+                        <select>
+                            <option>Выберите услугу</option>
+                            <option>Стрижка</option>
+                            <option>Окрашивание</option>
+                            <option>Маникюр</option>
+                            <option>Педикюр</option>
+                            <option>Уход за лицом</option>
+                            <option>Визаж</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="2" placeholder="Пожелания по дате/времени"></textarea>
+                    </div>
+                    <button type="submit" class="btn" style="width:100%">Отправить заявку</button>
+                    <p id="formMessage" style="margin-top: 12px; text-align: center; font-size:0.9rem;"></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты и карта -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Как нас найти</h2>
+            <div class="contact-wrapper">
+                <div class="contact-details">
+                    <p>📍 г. Москва, ул. Красоты, 15</p>
+                    <p>📞 +7 (495) 123-45-67</p>
+                    <p>✉️ hello@belleza.ru</p>
+                    <p>🕒 Ежедневно 09:00 – 21:00</p>
+                    <div style="margin-top: 20px;">
+                        <a href="#" style="margin-right: 20px; color:#c45a48;">Instagram</a>
+                        <a href="#" style="color:#c45a48;">Telegram</a>
+                    </div>
+                </div>
+                <div class="map-placeholder">
+                    📍 Карта проезда (м. Добрынинская, выход №3)
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+<footer>
+    <div class="container">
+        <p>© 2026 Салон красоты Belleza. Все права защищены.</p>
+        <p style="font-size: 0.8rem; margin-top: 8px;">*Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки данных</p>
+    </div>
+</footer>
+
+<script>
+    const form = document.getElementById('appointmentForm');
+    const msg = document.getElementById('formMessage');
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        msg.textContent = 'Спасибо! Мы перезвоним вам в течение 15 минут.';
+        msg.style.color = '#2b7a4b';
+        form.reset();
+        setTimeout(() => msg.textContent = '', 5000);
+    });
+</script>
+</body>
+</html>
