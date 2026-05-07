@@ -2,9 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>AURA | молодёжная бьюти-лаборатория</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✦ NEBULA BEAUTY ✦ | Без фото, чистая магия</title>
     <style>
         * {
             margin: 0;
@@ -13,65 +12,80 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0a0a1a;
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+            background: radial-gradient(circle at 20% 30%, #050510, #0a0a2a);
             color: #ffffff;
             overflow-x: hidden;
             scroll-behavior: smooth;
         }
 
-        /* ===== АНИМИРОВАННЫЙ ФОН (градиент + парящие пятна) ===== */
-        .animated-bg {
+        /* анимированный фон с мерцающими точками и волнами */
+        .stars-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             z-index: -2;
-            background: radial-gradient(circle at 20% 30%, #0f0c29, #1a1a3e, #24243e);
-            animation: bgPulse 12s ease infinite alternate;
+            background: radial-gradient(ellipse at 40% 50%, #0f0c29, #030318);
         }
 
-        @keyframes bgPulse {
-            0% { background: radial-gradient(circle at 20% 30%, #0f0c29, #1a1a3e, #24243e);}
-            50% { background: radial-gradient(circle at 80% 70%, #1e1b4b, #2e1a47, #0e0a2a);}
-            100% { background: radial-gradient(circle at 40% 60%, #2d1b4e, #0e0c2a, #161c3c);}
-        }
-
-        /* парящие световые сферы */
-        .glow-sphere {
+        .stars {
             position: fixed;
-            width: 40vw;
-            height: 40vw;
-            background: radial-gradient(circle, rgba(255, 80, 200, 0.25), rgba(120, 80, 255, 0) 70%);
-            border-radius: 50%;
-            filter: blur(70px);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             z-index: -1;
-            animation: floatSphere 18s infinite alternate ease-in-out;
+            background-image: 
+                radial-gradient(2px 2px at 20px 30px, #fff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 80px 120px, #ffddff, rgba(0,0,0,0)),
+                radial-gradient(3px 3px at 300px 250px, #ffffff, rgba(0,0,0,0)),
+                radial-gradient(1px 1px at 500px 800px, #ffb3ff, rgba(0,0,0,0)),
+                radial-gradient(2px 2px at 90% 20%, #cceeff, rgba(0,0,0,0));
+            background-repeat: no-repeat;
+            background-size: 200px 200px, 300px 300px, 400px 400px, 500px 500px, 250px 250px;
+            opacity: 0.7;
+            animation: twinkle 4s infinite alternate;
         }
 
-        .sphere1 { top: -15%; left: -10%; animation-duration: 22s; background: radial-gradient(circle, rgba(0, 200, 255, 0.3), transparent 80%);}
-        .sphere2 { bottom: -10%; right: -5%; width: 50vw; height: 50vw; animation-duration: 25s; background: radial-gradient(circle, rgba(255, 70, 200, 0.3), transparent 80%);}
-        .sphere3 { top: 40%; left: 60%; width: 30vw; height: 30vw; animation-duration: 19s; background: radial-gradient(circle, rgba(255, 200, 70, 0.2), transparent 80%);}
+        @keyframes twinkle {
+            0% { opacity: 0.4; }
+            100% { opacity: 1; }
+        }
 
-        @keyframes floatSphere {
+        /* летающие геометрические фигуры */
+        .floating-shape {
+            position: fixed;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,80,200,0.3), transparent);
+            filter: blur(60px);
+            z-index: -1;
+            animation: float 18s infinite alternate ease-in-out;
+        }
+
+        .shape1 { width: 40vw; height: 40vw; top: -10%; left: -15%; background: radial-gradient(circle, rgba(0,200,255,0.4), transparent); animation-duration: 22s; }
+        .shape2 { width: 50vw; height: 50vw; bottom: -20%; right: -20%; background: radial-gradient(circle, rgba(255,80,200,0.35), transparent); animation-duration: 26s; }
+        .shape3 { width: 30vw; height: 30vw; top: 40%; left: 60%; background: radial-gradient(circle, rgba(255,200,80,0.3), transparent); animation-duration: 19s; }
+        .shape4 { width: 25vw; height: 25vw; bottom: 30%; left: 10%; background: radial-gradient(circle, rgba(120,220,255,0.3), transparent); animation-duration: 28s; }
+
+        @keyframes float {
             0% { transform: translate(0, 0) scale(1);}
-            100% { transform: translate(5%, 8%) scale(1.2);}
+            100% { transform: translate(8%, 10%) scale(1.3);}
         }
 
-        /* контейнер */
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 28px;
+            padding: 0 32px;
             position: relative;
         }
 
         /* стеклянный хедер */
-        header {
+        .glass-header {
             backdrop-filter: blur(12px);
-            background: rgba(10, 10, 26, 0.5);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            background: rgba(5, 5, 20, 0.5);
+            border-bottom: 1px solid rgba(255,255,200,0.1);
             position: sticky;
             top: 0;
             z-index: 100;
@@ -81,18 +95,19 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 18px 0;
+            padding: 20px 0;
             flex-wrap: wrap;
+            gap: 16px;
         }
 
         .logo {
             font-size: 1.8rem;
             font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #fff, #d9a7ff, #a86eff);
+            background: linear-gradient(135deg, #fff, #ff99cc, #aa88ff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
+            letter-spacing: -0.5px;
         }
 
         .nav-links {
@@ -105,45 +120,42 @@
             text-decoration: none;
             font-weight: 500;
             color: #f0eaff;
-            transition: 0.2s;
-            font-size: 1rem;
+            transition: 0.3s;
         }
 
         .nav-links a:hover {
             color: #ff66cc;
-            text-shadow: 0 0 5px #ff66cc;
+            text-shadow: 0 0 8px #ff66cc;
         }
 
-        /* кнопки */
         .btn {
             display: inline-block;
-            background: linear-gradient(95deg, #a23eff, #ff3d8e);
-            padding: 12px 30px;
-            border-radius: 50px;
+            background: linear-gradient(95deg, #c026ff, #ff3d8e);
+            padding: 12px 28px;
+            border-radius: 60px;
             font-weight: 700;
             text-decoration: none;
             color: white;
             transition: 0.2s;
             border: none;
             cursor: pointer;
-            box-shadow: 0 0 8px rgba(255, 61, 142, 0.3);
+            box-shadow: 0 0 12px rgba(255, 61, 142, 0.4);
         }
 
         .btn:hover {
             transform: scale(1.02);
-            box-shadow: 0 0 20px rgba(255, 61, 142, 0.6);
-            background: linear-gradient(95deg, #b44eff, #ff4d9e);
+            box-shadow: 0 0 24px #ff66cc;
         }
 
-        /* герой */
+        /* hero */
         .hero {
-            padding: 5rem 0 6rem;
+            padding: 100px 0 120px;
         }
 
         .hero-grid {
             display: flex;
             align-items: center;
-            gap: 3rem;
+            gap: 4rem;
             flex-wrap: wrap;
         }
 
@@ -152,10 +164,10 @@
         }
 
         .hero-content h1 {
-            font-size: 3.7rem;
+            font-size: 4rem;
             font-weight: 800;
             line-height: 1.2;
-            background: linear-gradient(135deg, #fff, #ffb3f0, #b77aff);
+            background: linear-gradient(135deg, #fff, #ffb8f0, #b57cff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -164,45 +176,69 @@
 
         .hero-content p {
             font-size: 1.2rem;
-            color: #ccc5f0;
+            color: #cbc6ff;
             margin-bottom: 2rem;
         }
 
-        .hero-img {
-            flex: 1;
-            text-align: center;
-            filter: drop-shadow(0 0 20px rgba(255, 80, 200, 0.3));
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
         }
 
-        .hero-img img {
-            max-width: 100%;
-            border-radius: 40px;
-            background: rgba(255,255,245,0.05);
+        .stat {
+            font-size: 1rem;
+        }
+
+        .stat strong {
+            font-size: 1.8rem;
+            font-weight: 800;
+            display: block;
+            color: #ffb3ff;
+        }
+
+        /* декоративный блок вместо фото — анимированный абстрактный ромб */
+        .abstract-glow {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .glow-cube {
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle at 30% 30%, rgba(255,200,255,0.8), rgba(100,50,200,0.4));
+            border-radius: 35% 65% 70% 30% / 40% 50% 50% 60%;
+            animation: morphing 10s infinite alternate;
+            box-shadow: 0 0 70px rgba(255,100,200,0.6);
             backdrop-filter: blur(4px);
+        }
+
+        @keyframes morphing {
+            0% { border-radius: 35% 65% 70% 30% / 40% 50% 50% 60%; transform: rotate(0deg) scale(1);}
+            50% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: rotate(5deg) scale(1.05);}
+            100% { border-radius: 45% 55% 65% 35% / 45% 55% 45% 55%; transform: rotate(-3deg) scale(1.02);}
         }
 
         /* секции */
         section {
-            padding: 5rem 0;
+            padding: 90px 0;
             border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .section-title {
-            font-size: 2.6rem;
-            font-weight: 700;
+            font-size: 2.8rem;
             text-align: center;
             margin-bottom: 3rem;
-            letter-spacing: -0.5px;
-        }
-
-        .section-gradient {
-            background: linear-gradient(110deg, #f0eaff, #e2c2ff);
+            font-weight: 700;
+            background: linear-gradient(120deg, #ffffff, #ffb3f0);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        /* карточки услуг */
+        /* карточки услуг с иконками-эмодзи */
         .services-grid {
             display: flex;
             flex-wrap: wrap;
@@ -211,94 +247,92 @@
         }
 
         .service-card {
-            background: rgba(20, 20, 45, 0.65);
+            background: rgba(20, 15, 45, 0.65);
             backdrop-filter: blur(12px);
             border-radius: 2rem;
             padding: 2rem 1.5rem;
-            width: 280px;
+            width: 260px;
             text-align: center;
-            border: 1px solid rgba(255,255,255,0.15);
-            transition: all 0.3s ease;
-            transform: translateY(0);
+            border: 1px solid rgba(255,255,200,0.15);
+            transition: all 0.3s cubic-bezier(0.2,0.9,0.4,1.1);
         }
 
         .service-card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-12px);
             border-color: #ff66cc;
-            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5);
-            background: rgba(30, 25, 60, 0.8);
+            background: rgba(40, 25, 70, 0.8);
+            box-shadow: 0 20px 30px -10px rgba(255,0,150,0.2);
         }
 
-        .service-card img {
-            width: 64px;
-            filter: drop-shadow(0 0 6px #ff66aa);
+        .service-icon {
+            font-size: 4rem;
             margin-bottom: 1rem;
+            display: inline-block;
+            filter: drop-shadow(0 0 6px #ff88dd);
         }
 
         .service-card h3 {
-            font-size: 1.6rem;
-            margin-bottom: 0.5rem;
+            font-size: 1.7rem;
+            margin-bottom: 0.7rem;
         }
 
-        .price-badge {
-            font-weight: 800;
-            color: #ffb86b;
-            margin-top: 15px;
+        .price {
+            font-weight: 700;
+            color: #ffba7a;
+            margin-top: 16px;
             font-size: 1.3rem;
         }
 
-        /* галерея сетка (glow эффект) */
+        /* галерея без картинок — цветные неон-блоки */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
             gap: 1.8rem;
         }
 
         .gallery-item {
             aspect-ratio: 1 / 1;
-            border-radius: 28px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            transition: 0.25s;
-        }
-
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.4s;
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.05);
-        }
-
-        .gallery-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(255,80,200,0.2));
-            opacity: 0;
-            transition: 0.3s;
+            background: linear-gradient(145deg, #120c2c, #1e1750);
+            border-radius: 32px;
             display: flex;
-            align-items: flex-end;
-            padding: 1rem;
-            font-weight: 600;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            transition: 0.3s;
+            border: 1px solid rgba(255,180,255,0.2);
+            cursor: pointer;
+            backdrop-filter: blur(8px);
         }
 
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
+        .gallery-item span {
+            font-size: 3.5rem;
+            margin-bottom: 12px;
+        }
+
+        .gallery-item p {
+            font-size: 1rem;
+            color: #ffd9ff;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.02);
+            border-color: #ff77dd;
+            box-shadow: 0 0 35px rgba(255,119,221,0.4);
+            background: linear-gradient(145deg, #221b4a, #2a2262);
         }
 
         /* форма */
-        .form-container {
-            max-width: 600px;
+        .form-card {
+            max-width: 620px;
             margin: 0 auto;
-            background: rgba(10, 10, 35, 0.6);
-            backdrop-filter: blur(16px);
-            border-radius: 2.5rem;
+            background: rgba(12, 10, 35, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
             padding: 2.5rem;
-            border: 1px solid rgba(255,255,200,0.2);
+            border: 1px solid rgba(255,200,255,0.2);
         }
 
         .form-group {
@@ -308,11 +342,11 @@
         input, select, textarea {
             width: 100%;
             padding: 14px 20px;
-            background: rgba(255,255,245,0.08);
-            border: 1px solid rgba(255,255,255,0.2);
+            background: rgba(255,255,250,0.05);
+            border: 1px solid rgba(255,255,200,0.3);
             border-radius: 60px;
             color: white;
-            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
             transition: 0.2s;
         }
 
@@ -323,76 +357,74 @@
 
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: #ff66cc;
-            box-shadow: 0 0 12px rgba(255,102,204,0.3);
+            border-color: #ff77aa;
+            box-shadow: 0 0 15px rgba(255,119,170,0.4);
         }
 
         footer {
-            padding: 2rem 0;
+            padding: 40px 0;
             text-align: center;
-            color: #aaa5d9;
+            color: #aaa4dd;
             border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        .social-links a {
-            color: #d9c8ff;
-            margin: 0 0.8rem;
+        .social a {
+            color: #ccb6ff;
+            margin: 0 1rem;
             text-decoration: none;
             font-weight: 500;
             transition: 0.2s;
         }
-
-        .social-links a:hover {
-            color: #ff80cc;
-            text-shadow: 0 0 4px #ff80cc;
+        .social a:hover {
+            color: #ff88dd;
+            text-shadow: 0 0 4px #ff88dd;
         }
 
         @media (max-width: 800px) {
-            .navbar {
-                flex-direction: column;
-                gap: 0.8rem;
-            }
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
+            .hero-content h1 { font-size: 2.8rem; }
+            .section-title { font-size: 2rem; }
+            .glow-cube { width: 200px; height: 200px; }
         }
     </style>
 </head>
 <body>
 
-<div class="animated-bg"></div>
-<div class="glow-sphere sphere1"></div>
-<div class="glow-sphere sphere2"></div>
-<div class="glow-sphere sphere3"></div>
+<div class="stars-bg"></div>
+<div class="stars"></div>
+<div class="floating-shape shape1"></div>
+<div class="floating-shape shape2"></div>
+<div class="floating-shape shape3"></div>
+<div class="floating-shape shape4"></div>
 
-<header>
+<div class="glass-header">
     <div class="container">
         <div class="navbar">
-            <div class="logo">✦ AURA LAB ✦</div>
+            <div class="logo">✦ NEBULA BEAUTY ✦</div>
             <ul class="nav-links">
                 <li><a href="#home">Главная</a></li>
                 <li><a href="#services">Услуги</a></li>
-                <li><a href="#gallery">Работы</a></li>
+                <li><a href="#gallery">Галерея</a></li>
                 <li><a href="#contact">Контакты</a></li>
             </ul>
         </div>
     </div>
-</header>
+</div>
 
 <main>
-    <section id="home" style="padding-top: 1rem;">
+    <section id="home" style="padding-top: 0;">
         <div class="container hero">
             <div class="hero-grid">
                 <div class="hero-content">
-                    <h1>Стиль вне<br> правил</h1>
-                    <p>Бьюти-лаборатория для нового поколения. Неон, дерзость, безупречный сервис. Твой образ — наше вдохновение.</p>
-                    <a href="#contact" class="btn">✨ Забронировать ✨</a>
+                    <h1>Красота вне гравитации</h1>
+                    <p>Без фото, только магия CSS. Анимированный фрактал, парящие фигуры и неоновая эстетика.</p>
+                    <a href="#contact" class="btn">✨ Манифест стиля ✨</a>
+                    <div class="hero-stats">
+                        <div class="stat"><strong>5000+</strong> восторженных</div>
+                        <div class="stat"><strong>∞</strong> футуризм</div>
+                    </div>
                 </div>
-                <div class="hero-img">
-                    <img src="https://picsum.photos/id/26/500/500" alt="модель с ярким макияжем">
+                <div class="abstract-glow">
+                    <div class="glow-cube"></div>
                 </div>
             </div>
         </div>
@@ -400,31 +432,31 @@
 
     <section id="services">
         <div class="container">
-            <h2 class="section-title"><span class="section-gradient">⚡ энергия стиля ⚡</span></h2>
+            <h2 class="section-title">⚡ цифровой ритуал ⚡</h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3059/3059098.png" alt="стрижка">
-                    <h3>Графика стрижек</h3>
-                    <p>Смелые линии, асимметрия, ультрамодные текстуры.</p>
-                    <div class="price-badge">от 1800 ₽</div>
+                    <div class="service-icon">💇‍♀️🌀</div>
+                    <h3>Кибер-стрижка</h3>
+                    <p>Голографические линии, асимметрия, нейро-текстуры</p>
+                    <div class="price">от 2100 ₽</div>
                 </div>
                 <div class="service-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1025/1025907.png" alt="цвет волос">
-                    <h3>Neon-колор</h3>
-                    <p>Кислотные оттенки, тату на волосах, airtouch.</p>
-                    <div class="price-badge">от 3200 ₽</div>
+                    <div class="service-icon">🎨✨</div>
+                    <h3>Neon колор</h3>
+                    <p>Светящиеся пигменты, ультрафиолетовый объём</p>
+                    <div class="price">от 3500 ₽</div>
                 </div>
                 <div class="service-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4494/4494277.png" alt="маникюр">
-                    <h3>3D маникюр</h3>
-                    <p>Жидкие камни, хромирование, цифровой дизайн.</p>
-                    <div class="price-badge">от 1500 ₽</div>
+                    <div class="service-icon">💅🔮</div>
+                    <h3>Галактика маникюр</h3>
+                    <p>Магнитные частицы, жидкий хром</p>
+                    <div class="price">от 1800 ₽</div>
                 </div>
                 <div class="service-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5948/5948589.png" alt="макияж">
-                    <h3>Makeover X</h3>
-                    <p>Футуристичный макияж, неоновые стрелки, блеск.</p>
-                    <div class="price-badge">от 2500 ₽</div>
+                    <div class="service-icon">👁️‍🗨️🌙</div>
+                    <h3>Макияж 2.0</h3>
+                    <p>Неоновые стрелки, мерцающие стразы, 3D-блёстки</p>
+                    <div class="price">от 2700 ₽</div>
                 </div>
             </div>
         </div>
@@ -432,53 +464,41 @@
 
     <section id="gallery">
         <div class="container">
-            <h2 class="section-title">#AURA_GALLERY</h2>
+            <h2 class="section-title"># ГАЛЕРЕЯ БЕЗ ФОТО</h2>
             <div class="gallery-grid">
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/id/64/400/400" alt="фото работы 1">
-                    <div class="gallery-overlay">neon hair</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/id/30/400/400" alt="фото работы 2">
-                    <div class="gallery-overlay">glossy nails</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/id/20/400/400" alt="фото работы 3">
-                    <div class="gallery-overlay">cyber makeup</div>
-                </div>
-                <div class="gallery-item">
-                    <img src="https://picsum.photos/id/82/400/400" alt="фото работы 4">
-                    <div class="gallery-overlay">texture cut</div>
-                </div>
+                <div class="gallery-item"><span>🌀</span><p>NEBULA CUT</p></div>
+                <div class="gallery-item"><span>⚡</span><p>NEON DREAMS</p></div>
+                <div class="gallery-item"><span>💎</span><p>LIQUID NAILS</p></div>
+                <div class="gallery-item"><span>🌌</span><p>STARGLOW MAKEUP</p></div>
             </div>
         </div>
     </section>
 
     <section id="contact">
         <div class="container">
-            <h2 class="section-gradient" style="text-align:center; font-size:2.2rem;">запишись на vibe</h2>
-            <div class="form-container" style="margin-top: 2rem;">
-                <form id="coolForm">
+            <h2 class="section-title" style="font-size:2rem;">запишись в гиперпространство</h2>
+            <div class="form-card">
+                <form id="spaceForm">
                     <div class="form-group">
-                        <input type="text" placeholder="твой ник / имя" required>
+                        <input type="text" placeholder="твоё имя / никнейм" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" placeholder="телефон telegram / whatsapp" required>
+                        <input type="tel" placeholder="телефон / telegram" required>
                     </div>
                     <div class="form-group">
                         <select>
-                            <option>выбери суперсилу</option>
-                            <option>стрижка мечты</option>
-                            <option>неон-окрашивание</option>
-                            <option>маникюр с характером</option>
+                            <option>выбери силу трансформации</option>
+                            <option>кибер-стрижка</option>
+                            <option>неон колор</option>
+                            <option>галактика маникюр</option>
                             <option>макияж 2.0</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea rows="2" placeholder="пожелания по дате/времени / вопрос"></textarea>
+                        <textarea rows="2" placeholder="дата, время, пожелания..."></textarea>
                     </div>
-                    <button type="submit" class="btn" style="width:100%">🚀 отправить заявку</button>
-                    <p id="demoMsg" style="text-align:center; margin-top: 1rem; font-size:0.85rem;"></p>
+                    <button type="submit" class="btn" style="width:100%">🚀 отправить запрос</button>
+                    <p id="formResult" style="text-align:center; margin-top: 1.2rem; font-size:0.85rem;"></p>
                 </form>
             </div>
         </div>
@@ -487,24 +507,22 @@
 
 <footer>
     <div class="container">
-        <div class="social-links" style="margin-bottom: 1rem;">
-            <a href="#">📸 INST</a>
-            <a href="#">🎵 TIKTOK</a>
-            <a href="#">💬 TG</a>
+        <div class="social">
+            <a href="#">INST</a>   <a href="#">TG</a>   <a href="#">X</a>
         </div>
-        <p>© 2026 AURA LAB — твой формат красоты. Анимированная вселенная стиля ✨</p>
+        <p style="margin-top: 1rem;">© 2026 NEBULA BEAUTY — код без единой фотографии, только чистая эстетика CSS ✦</p>
     </div>
 </footer>
 
 <script>
-    const form = document.getElementById('coolForm');
-    const feedback = document.getElementById('demoMsg');
-    form.addEventListener('submit', (e) => {
+    const f = document.getElementById('spaceForm');
+    const msgSpan = document.getElementById('formResult');
+    f.addEventListener('submit', (e) => {
         e.preventDefault();
-        feedback.innerHTML = '💜 заявка принята! Мы влетим в директ в течение часа 💜';
-        feedback.style.color = '#ffb3ff';
-        form.reset();
-        setTimeout(() => feedback.innerHTML = '', 5000);
+        msgSpan.innerHTML = '✅ Сияние принято! Мастер связится с тобой в ближайший световой луч. ✨';
+        msgSpan.style.color = '#ffb3ff';
+        f.reset();
+        setTimeout(() => msgSpan.innerHTML = '', 5000);
     });
 </script>
 </body>
