@@ -2,8 +2,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Belleza | Салон красоты</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>AURA | молодёжная бьюти-лаборатория</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,42 +13,83 @@
         }
 
         body {
-            font-family: 'Segoe UI', 'Roboto', system-ui, -apple-system, sans-serif;
-            background: #fffaf7;
-            color: #2d2a2a;
+            font-family: 'Inter', sans-serif;
+            background-color: #0a0a1a;
+            color: #ffffff;
+            overflow-x: hidden;
             scroll-behavior: smooth;
-            line-height: 1.4;
         }
 
+        /* ===== АНИМИРОВАННЫЙ ФОН (градиент + парящие пятна) ===== */
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            background: radial-gradient(circle at 20% 30%, #0f0c29, #1a1a3e, #24243e);
+            animation: bgPulse 12s ease infinite alternate;
+        }
+
+        @keyframes bgPulse {
+            0% { background: radial-gradient(circle at 20% 30%, #0f0c29, #1a1a3e, #24243e);}
+            50% { background: radial-gradient(circle at 80% 70%, #1e1b4b, #2e1a47, #0e0a2a);}
+            100% { background: radial-gradient(circle at 40% 60%, #2d1b4e, #0e0c2a, #161c3c);}
+        }
+
+        /* парящие световые сферы */
+        .glow-sphere {
+            position: fixed;
+            width: 40vw;
+            height: 40vw;
+            background: radial-gradient(circle, rgba(255, 80, 200, 0.25), rgba(120, 80, 255, 0) 70%);
+            border-radius: 50%;
+            filter: blur(70px);
+            z-index: -1;
+            animation: floatSphere 18s infinite alternate ease-in-out;
+        }
+
+        .sphere1 { top: -15%; left: -10%; animation-duration: 22s; background: radial-gradient(circle, rgba(0, 200, 255, 0.3), transparent 80%);}
+        .sphere2 { bottom: -10%; right: -5%; width: 50vw; height: 50vw; animation-duration: 25s; background: radial-gradient(circle, rgba(255, 70, 200, 0.3), transparent 80%);}
+        .sphere3 { top: 40%; left: 60%; width: 30vw; height: 30vw; animation-duration: 19s; background: radial-gradient(circle, rgba(255, 200, 70, 0.2), transparent 80%);}
+
+        @keyframes floatSphere {
+            0% { transform: translate(0, 0) scale(1);}
+            100% { transform: translate(5%, 8%) scale(1.2);}
+        }
+
+        /* контейнер */
         .container {
-            max-width: 1200px;
+            max-width: 1280px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 28px;
+            position: relative;
         }
 
-        /* Header */
+        /* стеклянный хедер */
         header {
-            background: rgba(255, 250, 245, 0.95);
-            backdrop-filter: blur(8px);
+            backdrop-filter: blur(12px);
+            background: rgba(10, 10, 26, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #ffd9ce;
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding: 18px 0;
             flex-wrap: wrap;
-            padding: 16px 0;
         }
 
         .logo {
             font-size: 1.8rem;
-            font-weight: 700;
+            font-weight: 800;
             letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #c37b6b, #b2473a);
+            background: linear-gradient(135deg, #fff, #d9a7ff, #a86eff);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -62,38 +104,40 @@
         .nav-links a {
             text-decoration: none;
             font-weight: 500;
-            color: #4a3a36;
+            color: #f0eaff;
             transition: 0.2s;
+            font-size: 1rem;
         }
 
         .nav-links a:hover {
-            color: #c95b4a;
+            color: #ff66cc;
+            text-shadow: 0 0 5px #ff66cc;
         }
 
-        /* Buttons */
+        /* кнопки */
         .btn {
             display: inline-block;
-            background: #c45a48;
-            color: white;
-            padding: 12px 28px;
-            border-radius: 40px;
+            background: linear-gradient(95deg, #a23eff, #ff3d8e);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: 700;
             text-decoration: none;
-            font-weight: 600;
+            color: white;
             transition: 0.2s;
             border: none;
             cursor: pointer;
+            box-shadow: 0 0 8px rgba(255, 61, 142, 0.3);
         }
 
         .btn:hover {
-            background: #a33f2e;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(196, 90, 72, 0.2);
+            transform: scale(1.02);
+            box-shadow: 0 0 20px rgba(255, 61, 142, 0.6);
+            background: linear-gradient(95deg, #b44eff, #ff4d9e);
         }
 
-        /* Hero */
+        /* герой */
         .hero {
-            background: linear-gradient(130deg, #fff1ea 0%, #ffe5db 100%);
-            padding: 4rem 0;
+            padding: 5rem 0 6rem;
         }
 
         .hero-grid {
@@ -108,49 +152,57 @@
         }
 
         .hero-content h1 {
-            font-size: 3rem;
-            color: #2c2020;
+            font-size: 3.7rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(135deg, #fff, #ffb3f0, #b77aff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
             margin-bottom: 1rem;
         }
 
         .hero-content p {
             font-size: 1.2rem;
-            color: #5e4b44;
+            color: #ccc5f0;
             margin-bottom: 2rem;
         }
 
         .hero-img {
             flex: 1;
             text-align: center;
+            filter: drop-shadow(0 0 20px rgba(255, 80, 200, 0.3));
         }
 
         .hero-img img {
             max-width: 100%;
-            border-radius: 36px;
-            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+            border-radius: 40px;
+            background: rgba(255,255,245,0.05);
+            backdrop-filter: blur(4px);
         }
 
-        /* sections */
+        /* секции */
         section {
             padding: 5rem 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
         .section-title {
-            font-size: 2.2rem;
+            font-size: 2.6rem;
+            font-weight: 700;
             text-align: center;
-            margin-bottom: 2.5rem;
-            color: #362828;
+            margin-bottom: 3rem;
+            letter-spacing: -0.5px;
         }
 
-        .about-text {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            font-size: 1.1rem;
-            color: #5f4a42;
+        .section-gradient {
+            background: linear-gradient(110deg, #f0eaff, #e2c2ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
         }
 
-        /* services grid */
+        /* карточки услуг */
         .services-grid {
             display: flex;
             flex-wrap: wrap;
@@ -159,158 +211,171 @@
         }
 
         .service-card {
-            background: white;
+            background: rgba(20, 20, 45, 0.65);
+            backdrop-filter: blur(12px);
             border-radius: 2rem;
-            padding: 1.8rem;
+            padding: 2rem 1.5rem;
+            width: 280px;
             text-align: center;
-            flex: 1 1 280px;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
-            border: 1px solid #ffe0d6;
-            transition: 0.2s;
+            border: 1px solid rgba(255,255,255,0.15);
+            transition: all 0.3s ease;
+            transform: translateY(0);
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #e6b3a5;
-            box-shadow: 0 15px 25px -10px rgba(0,0,0,0.08);
+            transform: translateY(-8px);
+            border-color: #ff66cc;
+            box-shadow: 0 20px 30px -12px rgba(0,0,0,0.5);
+            background: rgba(30, 25, 60, 0.8);
         }
 
         .service-card img {
             width: 64px;
+            filter: drop-shadow(0 0 6px #ff66aa);
             margin-bottom: 1rem;
         }
 
         .service-card h3 {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             margin-bottom: 0.5rem;
         }
 
-        .price {
-            font-weight: 700;
-            color: #c45a48;
+        .price-badge {
+            font-weight: 800;
+            color: #ffb86b;
+            margin-top: 15px;
             font-size: 1.3rem;
-            margin-top: 12px;
         }
 
-        /* price table */
-        .price-table {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
+        /* галерея сетка (glow эффект) */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .gallery-item {
+            aspect-ratio: 1 / 1;
             border-radius: 28px;
-            padding: 1.5rem;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            transition: 0.25s;
         }
 
-        .price-row {
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.5), rgba(255,80,200,0.2));
+            opacity: 0;
+            transition: 0.3s;
             display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px dashed #f0cfc4;
+            align-items: flex-end;
+            padding: 1rem;
+            font-weight: 600;
         }
 
-        .price-row:last-child {
-            border: none;
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
         }
 
-        .service-name {
-            font-weight: 500;
-        }
-
-        /* form */
-        .form-card {
-            background: white;
+        /* форма */
+        .form-container {
             max-width: 600px;
             margin: 0 auto;
-            padding: 2rem;
-            border-radius: 32px;
-            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+            background: rgba(10, 10, 35, 0.6);
+            backdrop-filter: blur(16px);
+            border-radius: 2.5rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,200,0.2);
         }
 
         .form-group {
-            margin-bottom: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
         input, select, textarea {
             width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #f0cfc4;
+            padding: 14px 20px;
+            background: rgba(255,255,245,0.08);
+            border: 1px solid rgba(255,255,255,0.2);
             border-radius: 60px;
-            font-family: inherit;
-            background: #fffdfc;
+            color: white;
+            font-family: 'Inter', sans-serif;
+            transition: 0.2s;
         }
 
         textarea {
-            border-radius: 24px;
+            border-radius: 28px;
+            resize: vertical;
         }
 
-        input:focus, select:focus {
+        input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: #c45a48;
-        }
-
-        /* contact info */
-        .contact-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-
-        .contact-details {
-            flex: 1;
-            background: white;
-            padding: 2rem;
-            border-radius: 32px;
-        }
-
-        .map-placeholder {
-            flex: 1;
-            background: #e9dbd5;
-            border-radius: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.9rem;
-            color: #7b5e54;
-            min-height: 220px;
+            border-color: #ff66cc;
+            box-shadow: 0 0 12px rgba(255,102,204,0.3);
         }
 
         footer {
-            background: #2b201d;
-            color: #cbb5ab;
+            padding: 2rem 0;
             text-align: center;
-            padding: 2rem;
+            color: #aaa5d9;
+            border-top: 1px solid rgba(255,255,255,0.05);
         }
 
-        @media (max-width: 700px) {
+        .social-links a {
+            color: #d9c8ff;
+            margin: 0 0.8rem;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+
+        .social-links a:hover {
+            color: #ff80cc;
+            text-shadow: 0 0 4px #ff80cc;
+        }
+
+        @media (max-width: 800px) {
             .navbar {
                 flex-direction: column;
                 gap: 0.8rem;
             }
-            .nav-links {
-                gap: 1.2rem;
-            }
             .hero-content h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
             .section-title {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
 
+<div class="animated-bg"></div>
+<div class="glow-sphere sphere1"></div>
+<div class="glow-sphere sphere2"></div>
+<div class="glow-sphere sphere3"></div>
+
 <header>
     <div class="container">
         <div class="navbar">
-            <div class="logo">💇‍♀️ Belleza</div>
+            <div class="logo">✦ AURA LAB ✦</div>
             <ul class="nav-links">
                 <li><a href="#home">Главная</a></li>
                 <li><a href="#services">Услуги</a></li>
-                <li><a href="#price">Цены</a></li>
+                <li><a href="#gallery">Работы</a></li>
                 <li><a href="#contact">Контакты</a></li>
             </ul>
         </div>
@@ -318,147 +383,103 @@
 </header>
 
 <main>
-    <!-- Hero секция -->
-    <section id="home" style="padding: 0;">
-        <div class="hero">
-            <div class="container hero-grid">
+    <section id="home" style="padding-top: 1rem;">
+        <div class="container hero">
+            <div class="hero-grid">
                 <div class="hero-content">
-                    <h1>Красота, которая вдохновляет</h1>
-                    <p>Салон красоты Belleza – место, где забота о себе становится ритуалом. Стильные стрижки, безупречный маникюр и спа-уходы.</p>
-                    <a href="#booking" class="btn">Записаться онлайн →</a>
+                    <h1>Стиль вне<br> правил</h1>
+                    <p>Бьюти-лаборатория для нового поколения. Неон, дерзость, безупречный сервис. Твой образ — наше вдохновение.</p>
+                    <a href="#contact" class="btn">✨ Забронировать ✨</a>
                 </div>
                 <div class="hero-img">
-                    <img src="https://picsum.photos/id/133/500/400" alt="Салон красоты">
+                    <img src="https://picsum.photos/id/26/500/500" alt="модель с ярким макияжем">
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- О салоне -->
-    <section id="about">
-        <div class="container">
-            <h2 class="section-title">О салоне</h2>
-            <div class="about-text">
-                <p>Belleza — это пространство нового поколения. Мы используем профессиональную косметику, стерильные инструменты и индивидуальный подход. Наши мастера регулярно повышают квалификацию, чтобы вы получали максимум удовольствия и уверенности в себе.</p>
-                <p style="margin-top: 1rem;">Атмосфера уюта, ароматы натуральных масел и безупречный сервис — ждем вас ежедневно.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Услуги (6 карточек) -->
     <section id="services">
         <div class="container">
-            <h2 class="section-title">Наши услуги</h2>
+            <h2 class="section-title"><span class="section-gradient">⚡ энергия стиля ⚡</span></h2>
             <div class="services-grid">
                 <div class="service-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2955/2955879.png" alt="Стрижка">
-                    <h3>Стрижки</h3>
-                    <p>Женские, мужские, детские. Модельные и повседневные.</p>
-                    <div class="price">от 1500 ₽</div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/3059/3059098.png" alt="стрижка">
+                    <h3>Графика стрижек</h3>
+                    <p>Смелые линии, асимметрия, ультрамодные текстуры.</p>
+                    <div class="price-badge">от 1800 ₽</div>
                 </div>
                 <div class="service-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/3483/3483602.png" alt="Окрашивание">
-                    <h3>Окрашивание</h3>
-                    <p>Балаяж, шатуш, тонирование, сложное колорирование.</p>
-                    <div class="price">от 3000 ₽</div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/1025/1025907.png" alt="цвет волос">
+                    <h3>Neon-колор</h3>
+                    <p>Кислотные оттенки, тату на волосах, airtouch.</p>
+                    <div class="price-badge">от 3200 ₽</div>
                 </div>
                 <div class="service-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4001/4001312.png" alt="Маникюр">
-                    <h3>Маникюр</h3>
-                    <p>Классический, аппаратный, покрытие гель-лак, дизайн.</p>
-                    <div class="price">от 1200 ₽</div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/4494/4494277.png" alt="маникюр">
+                    <h3>3D маникюр</h3>
+                    <p>Жидкие камни, хромирование, цифровой дизайн.</p>
+                    <div class="price-badge">от 1500 ₽</div>
                 </div>
                 <div class="service-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/4024/4024685.png" alt="Педикюр">
-                    <h3>Педикюр</h3>
-                    <p>Медицинский, аппаратный, SPA-педикюр.</p>
-                    <div class="price">от 1800 ₽</div>
-                </div>
-                <div class="service-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2886/2886588.png" alt="Косметология">
-                    <h3>Уход за лицом</h3>
-                    <p>Чистки, пилинги, массаж лица, ботокс для волос.</p>
-                    <div class="price">от 2000 ₽</div>
-                </div>
-                <div class="service-card">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2846/2846809.png" alt="Визаж">
-                    <h3>Визаж</h3>
-                    <p>Дневной, вечерний, свадебный макияж.</p>
-                    <div class="price">от 2500 ₽</div>
+                    <img src="https://cdn-icons-png.flaticon.com/512/5948/5948589.png" alt="макияж">
+                    <h3>Makeover X</h3>
+                    <p>Футуристичный макияж, неоновые стрелки, блеск.</p>
+                    <div class="price-badge">от 2500 ₽</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Цены (таблица) -->
-    <section id="price">
+    <section id="gallery">
         <div class="container">
-            <h2 class="section-title">Прайс-лист</h2>
-            <div class="price-table">
-                <div class="price-row"><span class="service-name">Женская стрижка (короткие волосы)</span><span>1500 ₽</span></div>
-                <div class="price-row"><span class="service-name">Женская стрижка (длинные волосы)</span><span>2200 ₽</span></div>
-                <div class="price-row"><span class="service-name">Окрашивание в один тон</span><span>3000 ₽</span></div>
-                <div class="price-row"><span class="service-name">Сложное окрашивание (airtouch, balayage)</span><span>5000 ₽</span></div>
-                <div class="price-row"><span class="service-name">Маникюр с покрытием</span><span>1400 ₽</span></div>
-                <div class="price-row"><span class="service-name">Педикюр (комплекс)</span><span>2200 ₽</span></div>
-                <div class="price-row"><span class="service-name">Чистка лица (ультразвуковая)</span><span>2500 ₽</span></div>
-                <div class="price-row"><span class="service-name">Вечерний макияж</span><span>3000 ₽</span></div>
+            <h2 class="section-title">#AURA_GALLERY</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/id/64/400/400" alt="фото работы 1">
+                    <div class="gallery-overlay">neon hair</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/id/30/400/400" alt="фото работы 2">
+                    <div class="gallery-overlay">glossy nails</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/id/20/400/400" alt="фото работы 3">
+                    <div class="gallery-overlay">cyber makeup</div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://picsum.photos/id/82/400/400" alt="фото работы 4">
+                    <div class="gallery-overlay">texture cut</div>
+                </div>
             </div>
-            <p style="text-align: center; margin-top: 1.5rem;">*точная стоимость после консультации с мастером</p>
         </div>
     </section>
 
-    <!-- Форма записи + контакты -->
-    <section id="booking">
+    <section id="contact">
         <div class="container">
-            <h2 class="section-title">Записаться в Belleza</h2>
-            <div class="form-card">
-                <form id="appointmentForm">
+            <h2 class="section-gradient" style="text-align:center; font-size:2.2rem;">запишись на vibe</h2>
+            <div class="form-container" style="margin-top: 2rem;">
+                <form id="coolForm">
                     <div class="form-group">
-                        <input type="text" placeholder="Ваше имя" required>
+                        <input type="text" placeholder="твой ник / имя" required>
                     </div>
                     <div class="form-group">
-                        <input type="tel" placeholder="Телефон *" required>
+                        <input type="tel" placeholder="телефон telegram / whatsapp" required>
                     </div>
                     <div class="form-group">
                         <select>
-                            <option>Выберите услугу</option>
-                            <option>Стрижка</option>
-                            <option>Окрашивание</option>
-                            <option>Маникюр</option>
-                            <option>Педикюр</option>
-                            <option>Уход за лицом</option>
-                            <option>Визаж</option>
+                            <option>выбери суперсилу</option>
+                            <option>стрижка мечты</option>
+                            <option>неон-окрашивание</option>
+                            <option>маникюр с характером</option>
+                            <option>макияж 2.0</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <textarea rows="2" placeholder="Пожелания по дате/времени"></textarea>
+                        <textarea rows="2" placeholder="пожелания по дате/времени / вопрос"></textarea>
                     </div>
-                    <button type="submit" class="btn" style="width:100%">Отправить заявку</button>
-                    <p id="formMessage" style="margin-top: 12px; text-align: center; font-size:0.9rem;"></p>
+                    <button type="submit" class="btn" style="width:100%">🚀 отправить заявку</button>
+                    <p id="demoMsg" style="text-align:center; margin-top: 1rem; font-size:0.85rem;"></p>
                 </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- Контакты и карта -->
-    <section id="contact">
-        <div class="container">
-            <h2 class="section-title">Как нас найти</h2>
-            <div class="contact-wrapper">
-                <div class="contact-details">
-                    <p>📍 г. Москва, ул. Красоты, 15</p>
-                    <p>📞 +7 (495) 123-45-67</p>
-                    <p>✉️ hello@belleza.ru</p>
-                    <p>🕒 Ежедневно 09:00 – 21:00</p>
-                    <div style="margin-top: 20px;">
-                        <a href="#" style="margin-right: 20px; color:#c45a48;">Instagram</a>
-                        <a href="#" style="color:#c45a48;">Telegram</a>
-                    </div>
-                </div>
-                <div class="map-placeholder">
-                    📍 Карта проезда (м. Добрынинская, выход №3)
-                </div>
             </div>
         </div>
     </section>
@@ -466,20 +487,24 @@
 
 <footer>
     <div class="container">
-        <p>© 2026 Салон красоты Belleza. Все права защищены.</p>
-        <p style="font-size: 0.8rem; margin-top: 8px;">*Нажимая «Отправить заявку», вы соглашаетесь с политикой обработки данных</p>
+        <div class="social-links" style="margin-bottom: 1rem;">
+            <a href="#">📸 INST</a>
+            <a href="#">🎵 TIKTOK</a>
+            <a href="#">💬 TG</a>
+        </div>
+        <p>© 2026 AURA LAB — твой формат красоты. Анимированная вселенная стиля ✨</p>
     </div>
 </footer>
 
 <script>
-    const form = document.getElementById('appointmentForm');
-    const msg = document.getElementById('formMessage');
+    const form = document.getElementById('coolForm');
+    const feedback = document.getElementById('demoMsg');
     form.addEventListener('submit', (e) => {
         e.preventDefault();
-        msg.textContent = 'Спасибо! Мы перезвоним вам в течение 15 минут.';
-        msg.style.color = '#2b7a4b';
+        feedback.innerHTML = '💜 заявка принята! Мы влетим в директ в течение часа 💜';
+        feedback.style.color = '#ffb3ff';
         form.reset();
-        setTimeout(() => msg.textContent = '', 5000);
+        setTimeout(() => feedback.innerHTML = '', 5000);
     });
 </script>
 </body>
