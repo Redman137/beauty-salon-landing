@@ -1,1 +1,1 @@
-https://htmlpreview.github.io/?https://github.com/Redman137/beauty-salon-landing/blob/main/index.html
+https://Redman137.github.io/beauty-salon-landing/
