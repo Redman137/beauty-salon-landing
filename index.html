@@ -12,16 +12,14 @@
         }
 
         body {
-            /* Основной текст — Montserrat (как в ТЗ) */
-            font-family: 'Montserrat', 'Segoe UI', system-ui, -apple-system, sans-serif;
-            background-color: #FFF5F0;   /* нежно-розовый/кремовый фон из ТЗ */
+            font-family: 'Montserrat', 'Segoe UI', system-ui, sans-serif;
+            background-color: #FFF5F0;
             color: #2d2a28;
             scroll-behavior: smooth;
             line-height: 1.5;
         }
 
-        /* Заголовки — Playfair Display (романтичный стиль) */
-        h1, h2, h3, .logo, .section-title, .card h3, .review-author {
+        h1, h2, h3, .logo, .section-title {
             font-family: 'Playfair Display', 'Times New Roman', Georgia, serif;
             font-weight: 500;
         }
@@ -32,7 +30,7 @@
             padding: 0 30px;
         }
 
-        /* ===== ШАПКА (Header): логотип + навигация ===== */
+        /* ===== ШАПКА ===== */
         header {
             background: rgba(255, 245, 240, 0.95);
             backdrop-filter: blur(8px);
@@ -54,7 +52,7 @@
         .logo {
             font-size: 1.9rem;
             font-weight: 600;
-            color: #D96B6B;  /* малиновый акцент */
+            color: #D96B6B;
             letter-spacing: -0.5px;
         }
         .logo::before {
@@ -81,10 +79,9 @@
             color: #D96B6B;
         }
 
-        /* ===== КНОПКИ: малиновые и оливковые акценты ===== */
         .btn {
             display: inline-block;
-            background: #D96B6B;   /* малиновый */
+            background: #D96B6B;
             color: white;
             padding: 12px 32px;
             border-radius: 50px;
@@ -102,23 +99,15 @@
             box-shadow: 0 6px 14px rgba(217, 107, 107, 0.3);
         }
 
-        .btn-outline {
-            background: transparent;
-            border: 2px solid #A3B18A;  /* оливковый */
-            color: #5c6e47;
-        }
-        .btn-outline:hover {
-            background: #A3B18A;
-            color: white;
-        }
-
-        /* ===== HERO SECTION: крупное фото, слоган, кнопка ===== */
+        /* ===== HERO С КРУТЫМ КРУГОМ ===== */
         .hero {
             padding: 80px 0 70px;
             background: linear-gradient(135deg, #FFF5F0 0%, #ffefe6 100%);
             position: relative;
+            overflow: hidden;
         }
-        /* акварельные разводы на фоне (как в ТЗ) */
+
+        /* акварельные разводы */
         .hero::before {
             content: "";
             position: absolute;
@@ -170,24 +159,125 @@
             max-width: 500px;
         }
 
-        .hero-image {
+        /* ===== КРУТОЙ КРУГ (центральный элемент) ===== */
+        .hero-circle {
             flex: 1;
             display: flex;
             justify-content: center;
+            align-items: center;
         }
-        .hero-image img {
+
+        .circle-wrapper {
+            position: relative;
+            width: 380px;
+            height: 380px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* внешнее кольцо с мягким свечением */
+        .circle-outer {
+            position: absolute;
             width: 100%;
-            max-width: 400px;
-            border-radius: 50% 40% 55% 45% / 45% 50% 50% 55%;
-            box-shadow: 0 25px 30px -15px rgba(100, 60, 40, 0.2);
-            transition: transform 0.3s;
-            border: 3px solid rgba(255,240,230,0.7);
+            height: 100%;
+            background: radial-gradient(circle, rgba(217,107,107,0.12) 0%, rgba(163,177,138,0.08) 100%);
+            border-radius: 50%;
+            animation: pulseGlow 3s infinite alternate ease-in-out;
+            z-index: 0;
         }
-        .hero-image img:hover {
+
+        /* основная круглая подложка с градиентом */
+        .circle-main {
+            position: absolute;
+            width: 320px;
+            height: 320px;
+            background: linear-gradient(145deg, #FFEFE5, #FFE2D4);
+            border-radius: 50%;
+            box-shadow: 0 25px 40px -15px rgba(100, 60, 40, 0.25), inset 0 2px 5px rgba(255,255,240,0.8);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 2;
+            transition: transform 0.4s ease;
+            border: 2px solid rgba(255,245,235,0.9);
+        }
+
+        .circle-main:hover {
             transform: scale(1.02);
         }
 
-        /* ===== СЕКЦИИ ===== */
+        /* большой цветок в центре */
+        .flower-icon {
+            font-size: 5.2rem;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+            animation: floatFlower 4s infinite ease-in-out;
+        }
+
+        /* декоративные лепестки вокруг */
+        .petal {
+            position: absolute;
+            font-size: 1.6rem;
+            opacity: 0.7;
+            animation: rotatePetal 20s infinite linear;
+        }
+
+        .petal-1 { top: -15px; left: 20%; animation-duration: 18s; }
+        .petal-2 { top: 10%; right: -20px; animation-duration: 22s; }
+        .petal-3 { bottom: -10px; left: 15%; animation-duration: 20s; }
+        .petal-4 { bottom: 15%; right: -5px; animation-duration: 24s; }
+        .petal-5 { top: 30%; left: -25px; animation-duration: 16s; }
+        .petal-6 { bottom: 25%; right: -15px; animation-duration: 26s; }
+
+        /* текст внутри круга */
+        .circle-text {
+            margin-top: 10px;
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #D96B6B;
+            background: rgba(255,250,245,0.7);
+            padding: 5px 15px;
+            border-radius: 40px;
+            backdrop-filter: blur(4px);
+            letter-spacing: 0.5px;
+        }
+
+        /* анимации */
+        @keyframes pulseGlow {
+            0% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(1.08);
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes floatFlower {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-8px) rotate(3deg);
+            }
+            100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+        }
+
+        @keyframes rotatePetal {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* ===== ОСТАЛЬНЫЕ СЕКЦИИ ===== */
         section {
             padding: 80px 0;
             border-bottom: 1px solid #f5e0d4;
@@ -198,14 +288,12 @@
             text-align: center;
             margin-bottom: 3rem;
             color: #5a3e34;
-            position: relative;
         }
         .section-title span {
             color: #D96B6B;
             font-weight: 700;
         }
 
-        /* карточки товаров (популярные букеты) */
         .cards-grid {
             display: flex;
             flex-wrap: wrap;
@@ -232,6 +320,7 @@
             margin-bottom: 12px;
         }
         .card h3 {
+            font-family: 'Playfair Display', serif;
             font-size: 1.4rem;
             margin: 12px 0 6px;
         }
@@ -245,14 +334,12 @@
             background: #A3B18A;
             padding: 10px 24px;
             font-size: 0.85rem;
-            margin-top: 6px;
             display: inline-block;
         }
         .small-btn:hover {
             background: #8f9d74;
         }
 
-        /* акции */
         .promo-grid {
             display: flex;
             flex-wrap: wrap;
@@ -282,7 +369,6 @@
             margin-top: 10px;
         }
 
-        /* преимущества (О нас) */
         .features {
             display: flex;
             flex-wrap: wrap;
@@ -302,7 +388,6 @@
             margin-bottom: 12px;
         }
 
-        /* отзывы */
         .reviews-grid {
             display: flex;
             flex-wrap: wrap;
@@ -324,9 +409,9 @@
         .review-author {
             font-weight: 600;
             color: #D96B6B;
+            font-family: 'Playfair Display', serif;
         }
 
-        /* доставка и оплата + карта/контакты */
         .delivery-wrapper {
             display: flex;
             flex-wrap: wrap;
@@ -348,10 +433,8 @@
             padding: 1rem;
             text-align: center;
             margin-top: 20px;
-            font-size: 0.9rem;
         }
 
-        /* контакты + форма заказа с датой/временем и открыткой */
         .contact-row {
             display: flex;
             flex-wrap: wrap;
@@ -379,7 +462,6 @@
             border-radius: 60px;
             font-family: 'Montserrat', sans-serif;
             background: white;
-            font-size: 0.9rem;
         }
         textarea {
             border-radius: 28px;
@@ -405,7 +487,11 @@
 
         @media (max-width: 800px) {
             .hero-content h1 { font-size: 2.3rem; }
-            .section-title { font-size: 1.9rem; }
+            .circle-wrapper { width: 280px; height: 280px; }
+            .circle-main { width: 230px; height: 230px; }
+            .flower-icon { font-size: 3.8rem; }
+            .circle-text { font-size: 0.8rem; }
+            .petal { font-size: 1.2rem; }
         }
     </style>
 </head>
@@ -426,7 +512,7 @@
     </div>
 </header>
 
-<!-- Hero: главный экран с крупным фото букета и кнопкой -->
+<!-- Hero с крутым кругом вместо обычной картинки -->
 <section class="hero">
     <div class="container">
         <div class="hero-grid">
@@ -436,124 +522,89 @@
                 <a href="#order-form" class="btn">Выбрать букет</a>
                 <div style="margin-top: 24px; font-size: 0.85rem; color: #b2826e;">✨ Доставка от 1 часа по городу</div>
             </div>
-            <div class="hero-image">
-                <img src="https://placehold.co/500x450/f7e1d4/d96b6b?text=🌹+Пионы+и+розы" alt="Букет цветов">
+            <div class="hero-circle">
+                <div class="circle-wrapper">
+                    <!-- внешнее свечение -->
+                    <div class="circle-outer"></div>
+                    <!-- летающие лепестки вокруг -->
+                    <div class="petal petal-1">🌸</div>
+                    <div class="petal petal-2">🌺</div>
+                    <div class="petal petal-3">🌼</div>
+                    <div class="petal petal-4">🌷</div>
+                    <div class="petal petal-5">💐</div>
+                    <div class="petal petal-6">🌹</div>
+                    <!-- основной круг -->
+                    <div class="circle-main">
+                        <div class="flower-icon">🌹✨</div>
+                        <div class="circle-text">свежие букеты</div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
-<!-- Блок "Популярные букеты" (карточки с фото, ценой, кнопкой) -->
+<!-- Каталог -->
 <section id="catalog">
     <div class="container">
         <h2 class="section-title"><span>Популярные</span> букеты</h2>
         <div class="cards-grid">
-            <div class="card">
-                <div class="card-img">🌸💐</div>
-                <h3>Нежность пионов</h3>
-                <div class="price">3 490 ₽</div>
-                <button class="btn small-btn order-quick" data-name="Нежность пионов">Заказать</button>
-            </div>
-            <div class="card">
-                <div class="card-img">🌹✨</div>
-                <h3>Алые розы</h3>
-                <div class="price">4 290 ₽</div>
-                <button class="btn small-btn order-quick" data-name="Алые розы">Заказать</button>
-            </div>
-            <div class="card">
-                <div class="card-img">🌻🍊</div>
-                <h3>Солнечный сад</h3>
-                <div class="price">3 190 ₽</div>
-                <button class="btn small-btn order-quick" data-name="Солнечный сад">Заказать</button>
-            </div>
-            <div class="card">
-                <div class="card-img">💜🌾</div>
-                <h3>Лавандовое поле</h3>
-                <div class="price">3 890 ₽</div>
-                <button class="btn small-btn order-quick" data-name="Лавандовое поле">Заказать</button>
-            </div>
+            <div class="card"><div class="card-img">🌸💐</div><h3>Нежность пионов</h3><div class="price">3 490 ₽</div><button class="btn small-btn order-quick" data-name="Нежность пионов">Заказать</button></div>
+            <div class="card"><div class="card-img">🌹✨</div><h3>Алые розы</h3><div class="price">4 290 ₽</div><button class="btn small-btn order-quick" data-name="Алые розы">Заказать</button></div>
+            <div class="card"><div class="card-img">🌻🍊</div><h3>Солнечный сад</h3><div class="price">3 190 ₽</div><button class="btn small-btn order-quick" data-name="Солнечный сад">Заказать</button></div>
+            <div class="card"><div class="card-img">💜🌾</div><h3>Лавандовое поле</h3><div class="price">3 890 ₽</div><button class="btn small-btn order-quick" data-name="Лавандовое поле">Заказать</button></div>
         </div>
     </div>
 </section>
 
-<!-- Блок "Акции" (скидки, подарки) -->
+<!-- Акции -->
 <section id="promo">
     <div class="container">
         <h2 class="section-title"><span>Акции</span> и подарки</h2>
         <div class="promo-grid">
-            <div class="promo-card">
-                <div class="card-img">🎁✉️</div>
-                <h3>Открытка в подарок</h3>
-                <p>При заказе от 2500₽ подарим тёплую открытку</p>
-                <div class="discount-badge">Подарок</div>
-            </div>
-            <div class="promo-card">
-                <div class="card-img">🌸💖</div>
-                <h3>Скидка на пионы</h3>
-                <p><span class="old-price">3 490₽</span> <strong>2 790₽</strong></p>
-                <div class="discount-badge">-20%</div>
-            </div>
-            <div class="promo-card">
-                <div class="card-img">🚚✨</div>
-                <h3>Бесплатная доставка</h3>
-                <p>При заказе от 3500₽ в пределах центра</p>
-                <div class="discount-badge">Акция</div>
-            </div>
+            <div class="promo-card"><div class="card-img">🎁✉️</div><h3>Открытка в подарок</h3><p>При заказе от 2500₽ подарим тёплую открытку</p><div class="discount-badge">Подарок</div></div>
+            <div class="promo-card"><div class="card-img">🌸💖</div><h3>Скидка на пионы</h3><p><span class="old-price">3 490₽</span> <strong>2 790₽</strong></p><div class="discount-badge">-20%</div></div>
+            <div class="promo-card"><div class="card-img">🚚✨</div><h3>Бесплатная доставка</h3><p>При заказе от 3500₽ в пределах центра</p><div class="discount-badge">Акция</div></div>
         </div>
     </div>
 </section>
 
-<!-- Блок "О нас" (преимущества) -->
+<!-- О нас -->
 <section>
     <div class="container">
         <h2 class="section-title"><span>О нас</span></h2>
         <div class="features">
             <div class="feature"><span class="feature-icon">🌿</span><h3>Свежие цветы</h3><p>Ежедневная поставка из лучших оранжерей</p></div>
-            <div class="feature"><span class="feature-icon">🤲</span><h3>Ручная сборка</h3><p>Каждый букет создаётся с душой и любовью</p></div>
+            <div class="feature"><span class="feature-icon">🤲</span><h3>Ручная сборка</h3><p>Каждый букет создаётся с душой</p></div>
             <div class="feature"><span class="feature-icon">🚚</span><h3>Бережная доставка</h3><p>Вакуумная упаковка, курьеры-флористы</p></div>
         </div>
     </div>
 </section>
 
-<!-- Отзывы покупателей -->
+<!-- Отзывы -->
 <section id="reviews">
     <div class="container">
         <h2 class="section-title"><span>Отзывы</span> наших клиентов</h2>
         <div class="reviews-grid">
-            <div class="review"><div class="review-text">“Самые свежие розы! Доставили точно к назначенному времени, букет выглядел лучше, чем на фото.”</div><div class="review-author">— Анастасия</div></div>
-            <div class="review"><div class="review-text">“Заказывала пионы на годовщину. Очень нежная упаковка, добавили открытку. Спасибо за сервис!”</div><div class="review-author">— Екатерина</div></div>
-            <div class="review"><div class="review-text">“Быстрая доставка, вежливый курьер. Цветы радовали больше недели. Рекомендую Flowers.”</div><div class="review-author">— Дмитрий</div></div>
+            <div class="review"><div class="review-text">“Самые свежие розы! Доставили точно ко времени, букет выглядел лучше, чем на фото.”</div><div class="review-author">— Анастасия</div></div>
+            <div class="review"><div class="review-text">“Заказывала пионы на годовщину. Очень нежная упаковка, добавили открытку. Спасибо!”</div><div class="review-author">— Екатерина</div></div>
+            <div class="review"><div class="review-text">“Быстрая доставка, вежливый курьер. Цветы радовали больше недели. Рекомендую.”</div><div class="review-author">— Дмитрий</div></div>
         </div>
     </div>
 </section>
 
-<!-- Доставка и оплата + карта -->
+<!-- Доставка и оплата -->
 <section id="delivery">
     <div class="container">
         <h2 class="section-title"><span>Доставка</span> и оплата</h2>
         <div class="delivery-wrapper">
-            <div class="delivery-info">
-                <h3>📍 Зоны доставки</h3>
-                <p>Центр города — 250₽ (до 40 мин), пригород — 450₽. Бесплатно от 3500₽.</p>
-                <h3>💳 Способы оплаты</h3>
-                <p>Карта онлайн, наличные курьеру, СБП, перевод.</p>
-                <h3>⏰ Время работы</h3>
-                <p>Ежедневно 9:00–21:00, доставка до 20:00.</p>
-            </div>
-            <div class="delivery-info">
-                <div class="map-block">
-                    🗺️ <strong>Flowers на карте</strong><br>
-                    г. Москва, ул. Цветочная, д. 12<br>
-                    (м. Арбатская, выход к бульвару)<br>
-                    📞 +7 (495) 123-45-67
-                </div>
-                <p style="margin-top: 18px;">🌷 Магазин-студия работает ежедневно, можно забрать заказ самовывозом.</p>
-            </div>
+            <div class="delivery-info"><h3>📍 Зоны доставки</h3><p>Центр города — 250₽ (до 40 мин), пригород — 450₽. Бесплатно от 3500₽.</p><h3>💳 Способы оплаты</h3><p>Карта онлайн, наличные курьеру, СБП.</p><h3>⏰ Время работы</h3><p>Ежедневно 9:00–21:00, доставка до 20:00.</p></div>
+            <div class="delivery-info"><div class="map-block">🗺️ <strong>Flowers на карте</strong><br>г. Москва, ул. Цветочная, д. 12<br>(м. Арбатская)<br>📞 +7 (495) 123-45-67</div><p style="margin-top: 18px;">🌷 Магазин-студия работает ежедневно, можно забрать заказ самовывозом.</p></div>
         </div>
     </div>
 </section>
 
-<!-- Контакты и форма заказа (дата, время, открытка) -->
+<!-- Контакты и форма заказа -->
 <section id="contacts">
     <div class="container">
         <h2 class="section-title"><span>Контакты</span> и заказ</h2>
@@ -564,40 +615,18 @@
                 <p>📞 Телефон: +7 (495) 123-45-67</p>
                 <p>📧 Email: hello@flowers.shop</p>
                 <p>🕒 Режим: 09:00 – 21:00 без выходных</p>
-                <div class="socials" style="margin-top: 28px;">
-                    <a href="#">Instagram</a> | <a href="#">Telegram</a> | <a href="#">VK</a>
-                </div>
-                <p style="margin-top: 24px; font-size:0.85rem;">💐 Доставляем цветы с теплом и заботой</p>
+                <div class="socials" style="margin-top: 28px;"><a href="#">Instagram</a> | <a href="#">Telegram</a> | <a href="#">VK</a></div>
+                <p style="margin-top: 24px;">💐 Доставляем цветы с теплом и заботой</p>
             </div>
-
             <div class="order-card" id="order-form">
                 <h3 style="font-family: 'Playfair Display'; color: #D96B6B; margin-bottom: 20px;">Оформить заказ</h3>
                 <form id="orderForm">
-                    <div class="form-group">
-                        <input type="text" id="clientName" placeholder="Ваше имя" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="tel" id="clientPhone" placeholder="Телефон" required>
-                    </div>
-                    <div class="form-group">
-                        <select id="bouquetChoice">
-                            <option value="Нежность пионов">Нежность пионов — 3490₽</option>
-                            <option value="Алые розы">Алые розы — 4290₽</option>
-                            <option value="Солнечный сад">Солнечный сад — 3190₽</option>
-                            <option value="Лавандовое поле">Лавандовое поле — 3890₽</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label style="font-size: 0.8rem; margin-left: 8px;">Дата доставки</label>
-                        <input type="date" id="deliveryDate" required>
-                    </div>
-                    <div class="form-group">
-                        <label style="font-size: 0.8rem; margin-left: 8px;">Время доставки</label>
-                        <input type="time" id="deliveryTime" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea rows="2" id="cardText" placeholder="Текст открытки (до 120 символов) — мы подпишем от Вашего имени"></textarea>
-                    </div>
+                    <div class="form-group"><input type="text" id="clientName" placeholder="Ваше имя" required></div>
+                    <div class="form-group"><input type="tel" id="clientPhone" placeholder="Телефон" required></div>
+                    <div class="form-group"><select id="bouquetChoice"><option value="Нежность пионов">Нежность пионов — 3490₽</option><option value="Алые розы">Алые розы — 4290₽</option><option value="Солнечный сад">Солнечный сад — 3190₽</option><option value="Лавандовое поле">Лавандовое поле — 3890₽</option></select></div>
+                    <div class="form-group"><label style="font-size:0.8rem;">Дата доставки</label><input type="date" id="deliveryDate" required></div>
+                    <div class="form-group"><label style="font-size:0.8rem;">Время доставки</label><input type="time" id="deliveryTime" required></div>
+                    <div class="form-group"><textarea rows="2" id="cardText" placeholder="Текст открытки (до 120 символов) — мы подпишем от Вашего имени"></textarea></div>
                     <button type="submit" class="btn">Отправить заказ</button>
                     <p id="formResult" style="margin-top: 14px; font-size: 0.85rem;"></p>
                 </form>
@@ -614,15 +643,14 @@
 </footer>
 
 <script>
-    // Функция для автоматического заполнения формы при клике на "Заказать" в карточках
-    const orderButtons = document.querySelectorAll('.order-quick');
+    const orderBtns = document.querySelectorAll('.order-quick');
     const bouquetSelect = document.getElementById('bouquetChoice');
-    orderButtons.forEach(btn => {
+    orderBtns.forEach(btn => {
         btn.addEventListener('click', function() {
-            const bouquetName = this.getAttribute('data-name');
-            if (bouquetName) {
+            const name = this.getAttribute('data-name');
+            if (name) {
                 for (let i = 0; i < bouquetSelect.options.length; i++) {
-                    if (bouquetSelect.options[i].value === bouquetName) {
+                    if (bouquetSelect.options[i].value === name) {
                         bouquetSelect.selectedIndex = i;
                         break;
                     }
@@ -632,10 +660,8 @@
         });
     });
 
-    // Обработка отправки формы (с датой, временем, открыткой)
     const form = document.getElementById('orderForm');
     const resultMsg = document.getElementById('formResult');
-
     form.addEventListener('submit', (e) => {
         e.preventDefault();
         const name = document.getElementById('clientName').value.trim();
@@ -644,33 +670,21 @@
         const date = document.getElementById('deliveryDate').value;
         const time = document.getElementById('deliveryTime').value;
         const cardMsg = document.getElementById('cardText').value;
-
         if (!name || !phone || !date || !time) {
             resultMsg.innerHTML = '❌ Пожалуйста, заполните имя, телефон, дату и время доставки.';
             resultMsg.style.color = '#c15555';
             return;
         }
-
-        let cardInfo = '';
-        if (cardMsg.trim() !== '') {
-            cardInfo = ` 📝 Открытка: "${cardMsg.substring(0, 120)}"`;
-        }
-
-        resultMsg.innerHTML = `🌷 Спасибо, ${name}! Ваш заказ "${bouquet}" принят. Доставка ${date} в ${time}.${cardInfo} Мы свяжемся с вами в ближайшее время. 💐`;
+        let cardInfo = cardMsg.trim() !== '' ? ` 📝 Открытка: "${cardMsg.substring(0,120)}"` : '';
+        resultMsg.innerHTML = `🌷 Спасибо, ${name}! Ваш заказ "${bouquet}" принят. Доставка ${date} в ${time}.${cardInfo} Мы свяжемся с вами. 💐`;
         resultMsg.style.color = '#A3B18A';
-        resultMsg.style.fontWeight = '500';
-        
-        // Сброс формы, кроме имени/телефона оставляем? Лучше частичный сброс
         document.getElementById('clientName').value = '';
         document.getElementById('clientPhone').value = '';
         document.getElementById('deliveryDate').value = '';
         document.getElementById('deliveryTime').value = '';
         document.getElementById('cardText').value = '';
         bouquetSelect.selectedIndex = 0;
-
-        setTimeout(() => {
-            resultMsg.innerHTML = '';
-        }, 6000);
+        setTimeout(() => resultMsg.innerHTML = '', 5000);
     });
 </script>
 </body>
