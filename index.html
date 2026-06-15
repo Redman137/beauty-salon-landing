@@ -2,8 +2,8 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MILA | салон красоты</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Flowers | Цветы с любовью</title>
     <style>
         * {
             margin: 0;
@@ -12,11 +12,19 @@
         }
 
         body {
-            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
-            background: #fffcf9;
+            /* Основной текст — Montserrat (с запасными шрифтами) */
+            font-family: 'Montserrat', 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+            background-color: #FFF5F0;   /* нежно-розовый/кремовый фон */
             color: #2d2a28;
             scroll-behavior: smooth;
             line-height: 1.5;
+        }
+
+        /* Заголовки — Playfair Display для романтичного стиля */
+        h1, h2, h3, .logo, .hero-content h1, .section-title, .service-card h3, .master-card h4 {
+            font-family: 'Playfair Display', 'Times New Roman', Georgia, serif;
+            font-weight: 500;
+            letter-spacing: -0.2px;
         }
 
         .container {
@@ -25,30 +33,38 @@
             padding: 0 28px;
         }
 
-        /* header */
+        /* ===== ШАПКА (Header) ===== */
         header {
-            background: rgba(255, 252, 249, 0.96);
-            backdrop-filter: blur(8px);
+            background: rgba(255, 245, 240, 0.94);
+            backdrop-filter: blur(10px);
             position: sticky;
             top: 0;
             z-index: 100;
-            border-bottom: 1px solid #f0e4dc;
+            border-bottom: 1px solid #ffe0d4;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.02);
         }
 
         .navbar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
+            padding: 18px 0;
             flex-wrap: wrap;
             gap: 16px;
         }
 
         .logo {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 600;
+            color: #D96B6B;  /* малиновый акцент */
             letter-spacing: -0.5px;
-            color: #c47a5a;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .logo::before {
+            content: "🌸";
+            font-size: 1.8rem;
         }
 
         .nav-links {
@@ -60,57 +76,90 @@
         .nav-links a {
             text-decoration: none;
             font-weight: 500;
-            color: #4a3b34;
-            transition: 0.2s;
+            color: #6b4e42;
+            transition: 0.25s;
             font-size: 0.95rem;
+            letter-spacing: 0.3px;
         }
 
         .nav-links a:hover {
-            color: #c47a5a;
+            color: #D96B6B;
+            transform: translateY(-1px);
         }
 
-        /* buttons */
+        /* кнопки в стиле малиновый + оливковый акцент */
         .btn {
             display: inline-block;
-            background: #c47a5a;
+            background: #D96B6B;   /* малиновый акцент */
             color: white;
             padding: 12px 32px;
-            border-radius: 40px;
+            border-radius: 60px;
             text-decoration: none;
-            font-weight: 500;
+            font-weight: 600;
             transition: 0.25s;
             border: none;
             cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            box-shadow: 0 4px 10px rgba(217, 107, 107, 0.2);
         }
 
         .btn:hover {
-            background: #a85e3e;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 14px rgba(196, 122, 90, 0.25);
+            background: #bf5555;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(217, 107, 107, 0.3);
         }
 
         .btn-outline {
             background: transparent;
-            border: 1.5px solid #c47a5a;
-            color: #c47a5a;
+            border: 2px solid #A3B18A;  /* оливковый акцент */
+            color: #5c6e47;
         }
-
         .btn-outline:hover {
-            background: #c47a5a;
+            background: #A3B18A;
             color: white;
+            border-color: #A3B18A;
         }
 
-        /* hero */
+        /* Hero Section с акварельным настроением */
         .hero {
-            padding: 100px 0 80px;
-            background: linear-gradient(135deg, #fffaf5 0%, #fff5ed 100%);
+            padding: 90px 0 80px;
+            background: linear-gradient(125deg, #FFF5F0 0%, #ffece3 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        /* акварельные разводы (декоративные пятна) */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: -20%;
+            left: -10%;
+            width: 280px;
+            height: 280px;
+            background: radial-gradient(circle, rgba(217,107,107,0.08) 0%, rgba(163,177,138,0.05) 80%);
+            border-radius: 70% 30% 60% 40% / 40% 50% 60% 60%;
+            filter: blur(40px);
+            pointer-events: none;
+        }
+        .hero::after {
+            content: "";
+            position: absolute;
+            bottom: -10%;
+            right: -5%;
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, #A3B18A20 0%, #D96B6B10 90%);
+            border-radius: 50% 50% 40% 60% / 60% 40% 60% 40%;
+            filter: blur(45px);
+            pointer-events: none;
         }
 
         .hero-grid {
             display: flex;
             align-items: center;
-            gap: 4rem;
+            gap: 3rem;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         }
 
         .hero-content {
@@ -118,270 +167,275 @@
         }
 
         .hero-content h1 {
-            font-size: 3.5rem;
+            font-size: 3.8rem;
             font-weight: 600;
             line-height: 1.2;
-            color: #2d2a28;
+            color: #5a3e34;
             letter-spacing: -1px;
         }
-
         .hero-content p {
             font-size: 1.1rem;
-            color: #6b5b52;
+            color: #7b5e52;
             margin: 24px 0 32px;
-            max-width: 500px;
+            max-width: 520px;
         }
 
-        .hero-stats {
-            display: flex;
-            gap: 2rem;
-            margin-top: 40px;
-        }
-
-        .stat {
-            font-size: 0.9rem;
-            color: #7a6a62;
-        }
-
-        .stat strong {
-            font-size: 1.6rem;
-            font-weight: 600;
-            display: block;
-            color: #c47a5a;
-        }
-
-        .hero-abstract {
+        .hero-image {
             flex: 1;
             display: flex;
             justify-content: center;
+            align-items: center;
+        }
+        .flower-photo {
+            width: 100%;
+            max-width: 380px;
+            border-radius: 48% 52% 45% 55% / 60% 45% 55% 40%;
+            box-shadow: 0 30px 35px -18px rgba(100, 50, 30, 0.2);
+            transition: transform 0.4s ease;
+            border: 3px solid rgba(255,245,235,0.7);
+        }
+        .flower-photo:hover {
+            transform: scale(1.02);
         }
 
-        .soft-circle {
-            width: 320px;
-            height: 320px;
-            background: radial-gradient(circle, #f0dfd4, #e8cbbc);
-            border-radius: 60% 40% 50% 50% / 45% 50% 50% 55%;
-            animation: softMove 8s infinite alternate ease-in-out;
-            box-shadow: 0 20px 35px -10px rgba(100, 60, 40, 0.15);
-        }
-
-        @keyframes softMove {
-            0% { border-radius: 60% 40% 50% 50% / 45% 50% 50% 55%; transform: rotate(0deg);}
-            100% { border-radius: 45% 55% 40% 60% / 50% 45% 55% 50%; transform: rotate(2deg);}
-        }
-
-        /* sections */
+        /* секции */
         section {
             padding: 80px 0;
-            border-bottom: 1px solid #f3e8e0;
+            border-bottom: 1px solid #ffe0d4;
         }
 
         .section-title {
-            font-size: 2.2rem;
-            font-weight: 500;
+            font-size: 2.5rem;
             text-align: center;
             margin-bottom: 3rem;
-            letter-spacing: -0.3px;
-            color: #2d2a28;
+            color: #5a3e34;
+            position: relative;
+            display: inline-block;
+            width: 100%;
         }
-
         .section-title span {
-            color: #c47a5a;
-            font-weight: 600;
+            color: #D96B6B;
+            font-weight: 700;
+        }
+        .section-title::after {
+            content: "🌿";
+            font-size: 1.8rem;
+            margin-left: 12px;
+            opacity: 0.7;
+            display: inline-block;
+            vertical-align: middle;
         }
 
-        /* services grid */
-        .services-grid {
+        /* карточки товаров (популярные букеты) */
+        .cards-grid {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
             justify-content: center;
         }
-
-        .service-card {
+        .product-card {
             flex: 1 1 260px;
             background: white;
-            border-radius: 24px;
-            padding: 2rem 1.5rem;
+            border-radius: 28px;
+            padding: 1.4rem 1.2rem 1.8rem;
             text-align: center;
-            border: 1px solid #f0e2d8;
-            transition: all 0.25s;
+            transition: all 0.3s;
+            border: 1px solid #f5dfd2;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.02);
+            cursor: default;
         }
-
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #e2caba;
-            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.05);
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: #D96B6B60;
+            box-shadow: 0 20px 28px -12px rgba(217,107,107,0.2);
         }
-
-        .service-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
+        .product-img {
+            font-size: 4rem;
+            margin-bottom: 12px;
+        }
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin: 12px 0 6px;
+            color: #4d332a;
+        }
+        .price {
+            font-weight: 700;
+            color: #D96B6B;
+            font-size: 1.3rem;
+            margin: 12px 0;
+        }
+        .card-btn {
+            background: #A3B18A;
+            padding: 10px 20px;
+            font-size: 0.9rem;
+            margin-top: 8px;
             display: inline-block;
         }
-
-        .service-card h3 {
-            font-size: 1.4rem;
-            font-weight: 500;
-            margin-bottom: 10px;
+        .card-btn:hover {
+            background: #8f9d74;
         }
 
-        .service-card p {
-            color: #6b5b52;
-            font-size: 0.9rem;
+        /* акции + оливковый акцент */
+        .promo-badge {
+            background: #A3B18A20;
+            border-left: 5px solid #A3B18A;
+            padding: 1rem;
+            border-radius: 24px;
+        }
+        .promo-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+        .promo-card {
+            background: #fffaf7;
+            border-radius: 28px;
+            padding: 1.5rem;
+            flex: 1 1 260px;
+            text-align: center;
+            border: 1px dashed #e2cbbd;
+        }
+        .old-price {
+            text-decoration: line-through;
+            color: #ae8f80;
+            margin-right: 12px;
+        }
+        .discount {
+            background: #D96B6B;
+            color: white;
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+        }
+
+        /* преимущества «О нас» */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .feature {
+            flex: 1 1 180px;
+            text-align: center;
+            background: #fffbf8;
+            padding: 1.5rem;
+            border-radius: 32px;
+            transition: 0.2s;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            display: block;
             margin-bottom: 16px;
         }
 
-        .price-tag {
-            font-weight: 600;
-            color: #c47a5a;
-            font-size: 1.1rem;
-        }
-
-        /* masters (без фото) */
-        .masters-grid {
+        /* отзывы */
+        .reviews-slider {
             display: flex;
             flex-wrap: wrap;
             gap: 2rem;
             justify-content: center;
         }
-
-        .master-card {
-            flex: 1 1 200px;
-            text-align: center;
-            padding: 20px;
-        }
-
-        .master-avatar {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(145deg, #f2e4da, #e8d5c8);
-            border-radius: 50%;
-            margin: 0 auto 16px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-            box-shadow: 0 6px 14px rgba(0,0,0,0.05);
-        }
-
-        .master-card h4 {
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-
-        .master-card p {
-            font-size: 0.85rem;
-            color: #7f6b60;
-        }
-
-        /* price table */
-        .price-table {
-            max-width: 700px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 28px;
+        .review-card {
+            background: #fffbf9;
+            border-radius: 32px;
             padding: 1.8rem;
-            border: 1px solid #f0e2d8;
+            flex: 1 1 260px;
+            border: 1px solid #ffe0d4;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.02);
         }
-
-        .price-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 14px 0;
-            border-bottom: 1px dashed #eedfd4;
+        .review-text {
+            font-style: italic;
+            margin-bottom: 1rem;
         }
-
-        .price-row:last-child {
-            border: none;
-        }
-
-        .price-name {
-            font-weight: 500;
-        }
-
-        .price-value {
-            color: #c47a5a;
+        .review-author {
             font-weight: 600;
+            color: #D96B6B;
         }
 
-        /* contact form */
+        /* доставка и оплата */
+        .delivery-block {
+            background: #fff9f5;
+            border-radius: 36px;
+            padding: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-between;
+        }
+        .delivery-item {
+            flex: 1;
+        }
+        .map-placeholder {
+            background: #e7dbd0;
+            border-radius: 28px;
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        /* форма заказа + карта контакты */
         .contact-flex {
             display: flex;
             flex-wrap: wrap;
             gap: 3rem;
         }
-
         .contact-info {
             flex: 1;
-            background: white;
+            background: #fff9f5;
             padding: 2rem;
-            border-radius: 28px;
-            border: 1px solid #f0e2d8;
+            border-radius: 36px;
+            border: 1px solid #f5e0d4;
         }
-
-        .contact-info p {
-            margin: 16px 0;
-            font-size: 1rem;
-        }
-
-        .contact-form {
+        .order-form {
             flex: 1;
-        }
-
-        .form-card {
-            background: white;
+            background: #fff9f5;
             padding: 2rem;
-            border-radius: 28px;
-            border: 1px solid #f0e2d8;
+            border-radius: 36px;
+            border: 1px solid #f5e0d4;
         }
-
         .form-group {
             margin-bottom: 1.2rem;
         }
-
         input, select, textarea {
             width: 100%;
-            padding: 12px 16px;
-            border: 1px solid #e5d5ca;
+            padding: 12px 18px;
+            border: 1px solid #edd9ce;
             border-radius: 60px;
-            font-family: inherit;
-            font-size: 0.95rem;
-            background: #fffefc;
+            font-family: 'Montserrat', sans-serif;
+            background: white;
         }
-
         textarea {
-            border-radius: 24px;
-            resize: vertical;
+            border-radius: 28px;
         }
-
         input:focus, select:focus, textarea:focus {
             outline: none;
-            border-color: #c47a5a;
+            border-color: #D96B6B;
         }
 
         footer {
-            background: #fef7f2;
-            padding: 40px 0;
+            background: #FEEEE6;
+            padding: 40px 0 30px;
             text-align: center;
-            color: #8f7a6e;
+            color: #ad8a79;
             font-size: 0.85rem;
+            border-top: 1px solid #ffded0;
         }
-
-        .social-links a {
-            color: #b58a72;
+        .social-icons a {
+            color: #D96B6B;
             margin: 0 12px;
             text-decoration: none;
+            font-weight: 500;
         }
 
-        .social-links a:hover {
-            color: #c47a5a;
-        }
-
-        @media (max-width: 800px) {
-            .hero-content h1 { font-size: 2.3rem; }
-            .section-title { font-size: 1.8rem; }
-            .soft-circle { width: 220px; height: 220px; }
+        @media (max-width: 780px) {
+            .hero-content h1 { font-size: 2.4rem; }
+            .section-title { font-size: 1.9rem; }
+            .flower-photo { max-width: 280px; }
         }
     </style>
 </head>
@@ -390,148 +444,184 @@
 <header>
     <div class="container">
         <div class="navbar">
-            <div class="logo">✦ MILA STUDIO</div>
+            <div class="logo">Flowers</div>
             <ul class="nav-links">
-                <li><a href="#services">услуги</a></li>
-                <li><a href="#masters">мастера</a></li>
-                <li><a href="#price">прайс</a></li>
-                <li><a href="#contact">запись</a></li>
+                <li><a href="#catalog">Каталог</a></li>
+                <li><a href="#promo">Акции</a></li>
+                <li><a href="#delivery">Доставка</a></li>
+                <li><a href="#reviews">Отзывы</a></li>
+                <li><a href="#contact">Контакты</a></li>
             </ul>
         </div>
     </div>
 </header>
 
+<!-- Hero Section: слоган, кнопка, крупное фото букета (романтичный стиль) -->
 <section class="hero">
     <div class="container">
         <div class="hero-grid">
             <div class="hero-content">
-                <h1>красота <br>в каждой детали</h1>
-                <p>Салон MILA — место, где рождается гармония. Только премиальные средства, авторские техники и уютная атмосфера.</p>
-                <a href="#contact" class="btn">записаться онлайн</a>
-                <div class="hero-stats">
-                    <div class="stat"><strong>7 лет</strong> совершенства</div>
-                    <div class="stat"><strong>15+</strong> мастеров</div>
+                <h1>Цветы с любовью</h1>
+                <p>Свежие букеты ручной сборки, бережная доставка и атмосфера нежности. Порадуйте близких красотой природы.</p>
+                <a href="#orderForm" class="btn">Выбрать букет</a>
+                <div style="margin-top: 28px; font-size: 0.9rem; color:#b38674;">✨ Доставка по центру города от 1 часа</div>
+            </div>
+            <div class="hero-image">
+                <!-- крупное фото букета пионов – атмосферное изображение -->
+                <img class="flower-photo" src="https://placehold.co/600x500/f7e3d8/d96b6b?text=🌹+Букет+пионов" alt="Букет пионов" style="object-fit: cover; background: #f9e6db;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Блок популярные букеты -->
+<section id="catalog">
+    <div class="container">
+        <h2 class="section-title"><span>Популярные</span> букеты</h2>
+        <div class="cards-grid">
+            <div class="product-card">
+                <div class="product-img">🌸💐</div>
+                <h3>Нежность пионов</h3>
+                <p class="price">3 490 ₽</p>
+                <button class="btn card-btn order-trigger" data-bouquet="Нежность пионов">Заказать</button>
+            </div>
+            <div class="product-card">
+                <div class="product-img">🌹✨</div>
+                <h3>Алые розы</h3>
+                <p class="price">4 290 ₽</p>
+                <button class="btn card-btn order-trigger" data-bouquet="Алые розы">Заказать</button>
+            </div>
+            <div class="product-card">
+                <div class="product-img">🌻🍂</div>
+                <h3>Солнечный сад</h3>
+                <p class="price">3 190 ₽</p>
+                <button class="btn card-btn order-trigger" data-bouquet="Солнечный сад">Заказать</button>
+            </div>
+            <div class="product-card">
+                <div class="product-img">💜🌿</div>
+                <h3>Лавандовое поле</h3>
+                <p class="price">3 890 ₽</p>
+                <button class="btn card-btn order-trigger" data-bouquet="Лавандовое поле">Заказать</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Блок Акции (скидки и подарки) -->
+<section id="promo">
+    <div class="container">
+        <h2 class="section-title"><span>Акции</span> и подарки</h2>
+        <div class="promo-grid">
+            <div class="promo-card">
+                <div class="product-img">🎁💝</div>
+                <h3>Букет + открытка</h3>
+                <p>Открытка ручной работы в подарок при заказе от 2500₽</p>
+                <span class="discount">Подарок</span>
+            </div>
+            <div class="promo-card">
+                <div class="product-img">🌸💖</div>
+                <h3>Скидка 20% на пионы</h3>
+                <p><span class="old-price">3 490₽</span> <strong>2 790₽</strong></p>
+                <span class="discount">-20%</span>
+            </div>
+            <div class="promo-card">
+                <div class="product-img">🚚✨</div>
+                <h3>Бесплатная доставка</h3>
+                <p>При заказе от 3500₽ в пределах центра</p>
+                <span class="discount">акция</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- О нас / Преимущества -->
+<section>
+    <div class="container">
+        <h2 class="section-title"><span>О нас</span></h2>
+        <div class="features">
+            <div class="feature"><span class="feature-icon">🌿</span><h4>Свежие цветы</h4><p>Ежедневная поставка из лучших хозяйств</p></div>
+            <div class="feature"><span class="feature-icon">🤲</span><h4>Ручная сборка</h4><p>Каждый букет создаётся флористами с душой</p></div>
+            <div class="feature"><span class="feature-icon">🚚</span><h4>Бережная доставка</h4><p>Вакуумная упаковка, курьеры-флористы</p></div>
+        </div>
+    </div>
+</section>
+
+<!-- Отзывы покупателей -->
+<section id="reviews">
+    <div class="container">
+        <h2 class="section-title"><span>Отзывы</span> наших клиентов</h2>
+        <div class="reviews-slider">
+            <div class="review-card"><div class="review-text">“Потрясающий букет! Розы были свежайшими, доставили точно в срок. Спасибо за открытку, тёплое поздравление.”</div><div class="review-author">— Анастасия</div></div>
+            <div class="review-card"><div class="review-text">“Заказывала пионы на свидание. Очень нежный аромат, стильная упаковка. Обязательно закажу ещё!”</div><div class="review-author">— Екатерина</div></div>
+            <div class="review-card"><div class="review-text">“Быстрая доставка, вежливый курьер. Цветы простояли больше недели. Отличный сервис.”</div><div class="review-author">— Дмитрий</div></div>
+        </div>
+    </div>
+</section>
+
+<!-- Доставка и оплата + карта (блок) -->
+<section id="delivery">
+    <div class="container">
+        <h2 class="section-title"><span>Доставка</span> и оплата</h2>
+        <div class="delivery-block">
+            <div class="delivery-item">
+                <h3>🚚 Зоны доставки</h3>
+                <p>Центр города — от 250₽, до 30 минут. Пригород — от 450₽. Бесплатно от 3500₽.</p>
+                <h3>💳 Способы оплаты</h3>
+                <p>Карта онлайн, наличные курьеру, СБП. Безопасно и удобно.</p>
+            </div>
+            <div class="delivery-item">
+                <h3>⏰ Время работы</h3>
+                <p>Ежедневно с 9:00 до 21:00. Доставка заказов до 20:00.</p>
+                <div class="map-placeholder">
+                    📍 г. Москва, ул. Цветочная, 12 (цветочный квартал)<br>
+                    🗺️ Карта: м. Арбатская, выход к бульвару
                 </div>
             </div>
-            <div class="hero-abstract">
-                <div class="soft-circle"></div>
-            </div>
         </div>
     </div>
 </section>
 
-<section id="services">
-    <div class="container">
-        <h2 class="section-title">что мы <span>дарим</span></h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">💇‍♀️</div>
-                <h3>стрижки и укладки</h3>
-                <p>Женские, мужские, детские. Модельные и повседневные.</p>
-                <div class="price-tag">от 1800 ₽</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🎨</div>
-                <h3>окрашивание</h3>
-                <p>Балаяж, шатуш, airtouch, сложное колорирование.</p>
-                <div class="price-tag">от 3500 ₽</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">💅</div>
-                <h3>маникюр и педикюр</h3>
-                <p>Классика, аппарат, покрытие, дизайн, SPA.</p>
-                <div class="price-tag">от 1400 ₽</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">✨</div>
-                <h3>уход за лицом</h3>
-                <p>Чистки, пилинги, массаж, ботулинотерапия.</p>
-                <div class="price-tag">от 2200 ₽</div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="masters">
-    <div class="container">
-        <h2 class="section-title">наша <span>команда</span></h2>
-        <div class="masters-grid">
-            <div class="master-card">
-                <div class="master-avatar">💇</div>
-                <h4>Екатерина</h4>
-                <p>стилист-колорист</p>
-            </div>
-            <div class="master-card">
-                <div class="master-avatar">💅</div>
-                <h4>Алина</h4>
-                <p>мастер маникюра</p>
-            </div>
-            <div class="master-card">
-                <div class="master-avatar">🌿</div>
-                <h4>Мария</h4>
-                <p>косметолог</p>
-            </div>
-            <div class="master-card">
-                <div class="master-avatar">✂️</div>
-                <h4>Анна</h4>
-                <p>барбер / стилист</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<section id="price">
-    <div class="container">
-        <h2 class="section-title">примеры <span>цен</span></h2>
-        <div class="price-table">
-            <div class="price-row"><span class="price-name">Женская стрижка</span><span class="price-value">1800 ₽</span></div>
-            <div class="price-row"><span class="price-name">Мужская стрижка</span><span class="price-value">1200 ₽</span></div>
-            <div class="price-row"><span class="price-name">Окрашивание (однотон)</span><span class="price-value">3500 ₽</span></div>
-            <div class="price-row"><span class="price-name">Сложное окрашивание</span><span class="price-value">5500 ₽</span></div>
-            <div class="price-row"><span class="price-name">Маникюр + покрытие</span><span class="price-value">1700 ₽</span></div>
-            <div class="price-row"><span class="price-name">Чистка лица</span><span class="price-value">2800 ₽</span></div>
-        </div>
-    </div>
-</section>
-
+<!-- Контакты и форма заказа с выбором даты/времени + открытка -->
 <section id="contact">
     <div class="container">
-        <h2 class="section-title">давайте <span>знакомиться</span></h2>
+        <h2 class="section-title"><span>Контакты</span> и заказ</h2>
         <div class="contact-flex">
             <div class="contact-info">
-                <p>📍 Санкт-Петербург, ул. Большая Конюшенная, 14</p>
-                <p>📞 +7 (812) 123-45-67</p>
-                <p>✉️ hello@mila.studio</p>
-                <p>🕒 ежедневно 10:00 – 21:00</p>
-                <div class="social-links" style="margin-top: 28px;">
-                    <a href="#">Instagram</a>    <a href="#">Telegram</a>
+                <p>🌷 <strong>Flowers</strong> — цветочная мастерская</p>
+                <p>📍 Адрес: Москва, ул. Цветочная, 12</p>
+                <p>📞 +7 (495) 123-45-67</p>
+                <p>📧 hello@flowers.shop</p>
+                <p>⏰ 09:00 – 21:00 без выходных</p>
+                <div class="social-icons" style="margin-top: 24px;">
+                    <a href="#">Instagram</a> | <a href="#">Telegram</a> | <a href="#">VK</a>
                 </div>
+                <p style="margin-top: 24px; font-size:0.85rem;">🌺 Принимаем заказы на праздники и без повода</p>
             </div>
-            <div class="contact-form">
-                <div class="form-card">
-                    <form id="appointmentForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="имя" required>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="телефон" required>
-                        </div>
-                        <div class="form-group">
-                            <select>
-                                <option>выберите услугу</option>
-                                <option>стрижка / укладка</option>
-                                <option>окрашивание</option>
-                                <option>маникюр</option>
-                                <option>уход за лицом</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <textarea rows="2" placeholder="пожелания по времени"></textarea>
-                        </div>
-                        <button type="submit" class="btn">отправить заявку</button>
-                        <p id="formMessage" style="margin-top: 14px; font-size: 0.8rem;"></p>
-                    </form>
-                </div>
+            <div class="order-form" id="orderForm">
+                <h3 style="font-family: 'Playfair Display'; color:#be6b5b;">Оформить заказ</h3>
+                <form id="flowerOrderForm">
+                    <div class="form-group"><input type="text" placeholder="Ваше имя" id="name" required></div>
+                    <div class="form-group"><input type="tel" placeholder="Телефон" id="phone" required></div>
+                    <div class="form-group">
+                        <select id="bouquetSelect">
+                            <option value="Нежность пионов">Нежность пионов — 3490₽</option>
+                            <option value="Алые розы">Алые розы — 4290₽</option>
+                            <option value="Солнечный сад">Солнечный сад — 3190₽</option>
+                            <option value="Лавандовое поле">Лавандовое поле — 3890₽</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" id="deliveryDate" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="time" id="deliveryTime" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="2" placeholder="Текст открытки (до 120 символов) — подпишем от вашего имени"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Отправить заказ</button>
+                    <p id="orderMessage" style="margin-top: 14px; font-size: 0.85rem;"></p>
+                </form>
             </div>
         </div>
     </div>
@@ -539,20 +629,57 @@
 
 <footer>
     <div class="container">
-        <p>© 2026 MILA STUDIO — салон с душой и стилем</p>
+        <p>© 2026 Flowers — Цветы с любовью. Сайт-визитка с нежной душой.</p>
+        <p style="margin-top: 6px;">🌼 Свежий взгляд на флористику</p>
     </div>
 </footer>
 
 <script>
-    const form = document.getElementById('appointmentForm');
-    const msgSpan = document.getElementById('formMessage');
-    form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        msgSpan.textContent = 'спасибо! Мы перезвоним в течение часа 💫';
-        msgSpan.style.color = '#c47a5a';
-        form.reset();
-        setTimeout(() => msgSpan.textContent = '', 4500);
+    // Обработка формы заказа (онлайн-заказ с датой/временем и открыткой)
+    const orderForm = document.getElementById('flowerOrderForm');
+    const orderMsg = document.getElementById('orderMessage');
+    const bouquetSelect = document.getElementById('bouquetSelect');
+    
+    // Добавляем функционал кнопок "Заказать" на карточках (автозаполнение селекта)
+    const orderTriggers = document.querySelectorAll('.order-trigger');
+    orderTriggers.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const bouquetName = btn.getAttribute('data-bouquet');
+            if (bouquetName) {
+                // находим опцию в селекте, которая содержит это название
+                for(let i = 0; i < bouquetSelect.options.length; i++) {
+                    if(bouquetSelect.options[i].value === bouquetName) {
+                        bouquetSelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+            // плавный скролл к форме
+            document.getElementById('orderForm').scrollIntoView({ behavior: 'smooth', block: 'center' });
+        });
     });
+    
+    orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const name = document.getElementById('name').value.trim();
+        const phone = document.getElementById('phone').value.trim();
+        const bouquet = bouquetSelect.options[bouquetSelect.selectedIndex]?.text || 'букет';
+        const date = document.getElementById('deliveryDate').value;
+        const time = document.getElementById('deliveryTime').value;
+        if(!name || !phone || !date || !time) {
+            orderMsg.textContent = 'Пожалуйста, заполните имя, телефон, дату и время доставки.';
+            orderMsg.style.color = '#bf5555';
+            return;
+        }
+        orderMsg.innerHTML = `🌷 Спасибо, ${name}! Ваш заказ "${bouquet}" оформлен. Доставка ${date} в ${time}. Мы отправим открытку с пожеланиями. Скоро свяжемся! 💐`;
+        orderMsg.style.color = '#A3B18A';
+        orderMsg.style.fontWeight = '500';
+        orderForm.reset();
+        setTimeout(() => orderMsg.innerHTML = '', 6000);
+    });
+
+    // дополнительная эстетика: легкое появление акварельных ощущений (необяз)
+    console.log("Flowers — сайт с душой и романтичным стилем");
 </script>
 </body>
 </html>
